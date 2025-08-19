@@ -3,7 +3,7 @@ import "./LogoCloud.css";
 export default function LogoCloud() {
   const logos = [
     { name: "Google Ads", src: "/logos/Google_Ads_Logo.png" },
-    { name: "Meta", src: "/logos/Meta_Logo.png", customClass: "h-6" },
+    { name: "Meta", src: "/logos/Meta_Logo.png", customClass: "h-50" },
     { name: "TikTok", src: "/logos/tiktok_logo.png" },
     { name: "LinkedIn", src: "/logos/Linkedin_Logo.png" },
     { name: "X", src: "/logos/x_logo.png" },
@@ -28,7 +28,7 @@ export default function LogoCloud() {
             {duplicatedLogos.map((logo, index) => (
               <div key={index} className="logo-item">
                 <img
-                  className={`max-h-10 w-auto object-contain ${logo.customClass || "h-10"}`}
+                  className={`max-h-12 w-auto object-contain ${logo.customClass || "h-12"}`}
                   src={logo.src}
                   alt={logo.name}
                 />
