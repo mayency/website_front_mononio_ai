@@ -1,0 +1,26 @@
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  white-space: nowrap; /* מבטיח שכל הלוגואים יהיו בשורה */
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0));
+  mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0));
+}
+
+.logo-track {
+  display: inline-flex; /* inline-flex כדי לשמור אותם באותה שורה */
+  gap: 3rem; /* רווחים בין הלוגואים */
+  animation: scroll 40s linear infinite;
+}
+
+.logo-item {
+  flex: 0 0 auto; /* שלא יתכווצו */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
