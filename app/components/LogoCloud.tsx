@@ -2,19 +2,20 @@ import "./LogoCloud.css";
 
 export default function LogoCloud() {
   const logos = [
-    { name: "Google Ads", src: "/logos/Google_Ads_Logo.png" },
+    { name: "Google Ads", src: "/logos/Google_Ads_Logo.png", customClass: "h-40" },
     { name: "Meta", src: "/logos/Meta_Logo.png", customClass: "h-50" },
-    { name: "TikTok", src: "/logos/tiktok_logo.png" },
-    { name: "LinkedIn", src: "/logos/Linkedin_Logo.png" },
-    { name: "X", src: "/logos/x_logo.png" },
-    { name: "Instagram", src: "/logos/instegram_logo.png" },
-    { name: "YouTube", src: "/logos/youtube_logo.png" },
-    { name: "WhatsApp", src: "/logos/whatapp_logo.png" },
-    { name: "Telegram", src: "/logos/telegram_logo.png" },
-    { name: "Taboola", src: "/logos/taboola_logo.png" },
-    { name: "Outbrain", src: "/logos/outbrain_logo.png" }
+    { name: "TikTok", src: "/logos/tiktok_logo.png", customClass: "h-20" },
+    { name: "LinkedIn", src: "/logos/Linkedin_Logo.png", customClass: "h-45" },
+    { name: "X", src: "/logos/x_logo.png", customClass: "h-20" },
+    { name: "Instagram", src: "/logos/instagram_logo.png", customClass: "h-18" },
+    { name: "YouTube", src: "/logos/youtube_logo.png", customClass: "h-46" },
+    { name: "WhatsApp", src: "/logos/whatsapp_logo.png", customClass: "h-20" },
+    { name: "Telegram", src: "/logos/telegram_logo.png", customClass: "h-20" },
+    { name: "Taboola", src: "/logos/taboola_logo.png", customClass: "h-40" },
+    { name: "Outbrain", src: "/logos/outbrain_logo.png", customClass: "h-30" },
   ];
 
+  // Duplicate logos to create seamless infinite scroll
   const duplicatedLogos = [...logos, ...logos];
 
   return (
@@ -28,7 +29,7 @@ export default function LogoCloud() {
             {duplicatedLogos.map((logo, index) => (
               <div key={index} className="logo-item">
                 <img
-                  className={`max-h-12 w-auto object-contain ${logo.customClass || "h-12"}`}
+                  className={`w-auto object-contain ${logo.customClass}`}
                   src={logo.src}
                   alt={logo.name}
                 />

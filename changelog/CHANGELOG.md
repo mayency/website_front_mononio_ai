@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changelog System Implementation
 - Animated Hero Component Implementation
 - LogoCloud Component Horizontal Scrolling Animation
+- LogoCloud Custom Logo Sizing System
 
 ### Fixed
 - Script Permission Issue
@@ -20,11 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Template System Enhancement
 - LogoCloud CSS Layout Optimization
-
-
-
-### Added
-- Changelog System Implementation
+- LogoCloud Logo Size Hierarchy Implementation
+- LogoCloud Maximum Height Constraint Update
+- Outbrain Logo Size Reduction
 - Animated Hero Component Implementation
 - LogoCloud Component Horizontal Scrolling Animation
 
