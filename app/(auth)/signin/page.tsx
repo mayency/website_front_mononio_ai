@@ -1,27 +1,43 @@
+"use client";
+
+import DarkVeil from "@/blocks/Backgrounds/DarkVeil/DarkVeil";
+
 export default function LoginPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-900 text-white">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Sign In</h1>
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      {/* אפקט הרקע */}
+      <DarkVeil
+        hueShift={210}           // כחול-סגלגל
+        noiseIntensity={0.08}    // רעש עדין
+        scanlineIntensity={0.15} // קווי סריקה עדינים
+        scanlineFrequency={2.5}  // צפיפות הקווים
+        warpAmount={0.05}        // עיוות עדין
+        speed={0.6}              // מהירות רגועה
+        resolutionScale={1.2}    // חדות גבוהה
+      />
+
+      {/* כרטיס הלוגין */}
+      <div className="relative z-10 bg-gray-900/80 backdrop-blur-md p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-6 text-center text-white">Sign In</h1>
         <form className="space-y-4">
           <input
             type="email"
             placeholder="Email"
-            className="w-full px-4 py-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white"
           />
           <input
             type="password"
             placeholder="Password"
-            className="w-full px-4 py-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white"
           />
           <button
             type="submit"
-            className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 rounded-md transition-colors"
+            className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-2 rounded-md transition-colors"
           >
             Continue
           </button>
         </form>
       </div>
-    </div>
+    </main>
   );
-} 
+}

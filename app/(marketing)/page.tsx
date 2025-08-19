@@ -1,9 +1,30 @@
-export default function Page() { 
+"use client";
+
+import DarkVeil from "@/app/components/DarkVeil";
+
+export default function TestPage() {
   return (
-    <main className="p-10 text-center">
-      <h1 className="text-4xl font-bold">MonoNio AI</h1>
-      <p className="mt-4 text-lg text-gray-600">Automate multi-channel marketing with AI agents</p>
-      <a href="/pricing" className="mt-6 inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg">Get Started</a>
-    </main>
-  ); 
-} 
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Background Animation */}
+      <div className="absolute inset-0 z-0">
+        <DarkVeil
+          hueShift={210}
+          noiseIntensity={0.02}
+          scanlineIntensity={0.15}
+          scanlineFrequency={2.5}
+          warpAmount={0.05}
+          speed={0.6}
+          resolutionScale={1.2}
+        />
+      </div>
+      
+      {/* Content Layer */}
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <div className="text-center text-white">
+          <h1 className="text-6xl font-bold mb-4">Echo</h1>
+          <p className="text-xl opacity-90">Your content goes here</p>
+        </div>
+      </div>
+    </div>
+  );
+}
