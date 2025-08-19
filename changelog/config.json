@@ -1,0 +1,37 @@
+{
+  "project": {
+    "name": "Mononio AI Website",
+    "version": "0.1.0",
+    "description": "Frontend website for Mononio AI"
+  },
+  "changelog": {
+    "desktopSyncPath": "/Users/eitansegev/Desktop/mononio-ai-changelog",
+    "autoSync": true,
+    "gitHooks": true,
+    "templates": {
+      "features": "feature.md",
+      "fixes": "fix.md",
+      "improvements": "improvement.md",
+      "breaking": "breaking.md",
+      "docs": "docs.md",
+      "refactor": "refactor.md"
+    }
+  },
+  "git": {
+    "commitPrefixes": {
+      "features": ["feat:", "add:", "new:"],
+      "fixes": ["fix:", "bug:", "patch:"],
+      "improvements": ["improve:", "enhance:", "update:"],
+      "breaking": ["breaking:", "major:"],
+      "docs": ["docs:", "documentation:"],
+      "refactor": ["refactor:", "cleanup:"]
+    }
+  },
+  "formatting": {
+    "dateFormat": "YYYY-MM-DD",
+    "timeFormat": "HH:mm:ss",
+    "maxTitleLength": 100,
+    "includeCommitHash": true,
+    "includeFileList": true
+  }
+} 
