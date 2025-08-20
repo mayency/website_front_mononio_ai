@@ -1,30 +1,36 @@
 "use client";
 
-import DarkVeil from "@/app/components/DarkVeil";
-
-export default function TestPage() {
+export default function MarketingPage() {
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {/* Background Animation */}
-      <div className="absolute inset-0 z-0">
-        <DarkVeil
-          hueShift={210}
-          noiseIntensity={0.02}
-          scanlineIntensity={0.15}
-          scanlineFrequency={2.5}
-          warpAmount={0.05}
-          speed={0.6}
-          resolutionScale={1.2}
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black w-full">
+      {/* 🎥 רקע וידאו */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/Abstract_Neon_Clouds1.mp4" type="video/mp4" />
+      </video>
+
+      {/* 🌑 שכבת שקיפות לשיפור קריאות */}
+      <div className="absolute inset-0 bg-black/40 z-0" />
+
+      {/* ✨ תוכן ההירו */}
+      <div className="relative z-10 text-center text-white px-6">
+        <img
+          src="/logos/Mononio_Logo_1.png"
+          alt="Mononio AI Logo"
+          className="mx-auto mb-6 w-48 md:w-64 lg:w-72 drop-shadow-lg"
         />
+        <p className="text-lg mb-8 max-w-xl mx-auto">
+          הפלטפורמה החכמה שמעצימה את העסק שלך עם בינה מלאכותית מתקדמת.
+        </p>
+        <button className="px-8 py-4 bg-indigo-500 hover:bg-indigo-600 rounded-xl text-lg font-semibold shadow-lg transition">
+          גלה עוד
+        </button>
       </div>
-      
-      {/* Content Layer */}
-      <div className="relative z-10 flex items-center justify-center h-full">
-        <div className="text-center text-white">
-          <h1 className="text-6xl font-bold mb-4">Echo</h1>
-          <p className="text-xl opacity-90">Your content goes here</p>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }

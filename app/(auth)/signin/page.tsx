@@ -1,6 +1,6 @@
 "use client";
 
-import DarkVeil from "@/blocks/Backgrounds/DarkVeil/DarkVeil";
+import DarkVeil from "@/components/DarkVeil";
 
 export default function LoginPage() {
   return (
