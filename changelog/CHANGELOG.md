@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- CampaignBox Voice Recording Feature Implementation
+- CampaignBox Voice Recording Feature Implementation (with react-icons dependency)
 - Main Page Hero Section Implementation
 - Hero Section Campaign Box Updates
 - Priority 3 Desktop Performance Optimization
