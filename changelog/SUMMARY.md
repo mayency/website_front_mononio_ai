@@ -4,6 +4,19 @@
 
 A comprehensive changelog management system for the Mononio AI website project that automatically tracks changes and synchronizes with your desktop.
 
+## Recent Updates
+
+### Navbar Navigation Structure Update (2025-01-27)
+- Updated navigation structure from "Projects" to "Product" for better clarity
+- Added Hebrew localization comments for internationalization support
+- Restructured navigation links for improved user flow
+- Enhanced accessibility with proper aria-labels
+
+### Tailwind CSS Configuration Setup (2025-08-21)
+- Added `tailwind.config.js` with dark mode support
+- Configured content paths for app, components, and src directories
+- Ready for theme extensions and plugins
+
 ## Key Features
 
 ### ✅ **Automated Changelog Management**

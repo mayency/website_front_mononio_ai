@@ -1,21 +1,8 @@
 "use client";
 
-import DarkVeil from "@/components/DarkVeil";
-
 export default function LoginPage() {
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* אפקט הרקע */}
-      <DarkVeil
-        hueShift={210}           // כחול-סגלגל
-        noiseIntensity={0.08}    // רעש עדין
-        scanlineIntensity={0.15} // קווי סריקה עדינים
-        scanlineFrequency={2.5}  // צפיפות הקווים
-        warpAmount={0.05}        // עיוות עדין
-        speed={0.6}              // מהירות רגועה
-        resolutionScale={1.2}    // חדות גבוהה
-      />
-
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
       {/* כרטיס הלוגין */}
       <div className="relative z-10 bg-gray-900/80 backdrop-blur-md p-8 rounded-lg shadow-lg w-full max-w-md">
         <h1 className="text-2xl font-bold mb-6 text-center text-white">Sign In</h1>

@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function InteractiveButtons() {
   const handleGetStarted = () => {
-    console.log("Clicked Get Started!");
-    // כאן תוכל להוסיף ניווט, למשל: window.location.href = "/app/onboarding/1";
+    // Navigate to pricing page
+    window.location.href = "/pricing";
   };
 
   return (

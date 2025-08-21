@@ -1,18 +1,21 @@
+import React from "react";
+import Image from "next/image";
 import "./LogoCloud.css";
 
 export default function LogoCloud() {
   const logos = [
-    { name: "Google Ads", src: "/logos/Google_Ads_Logo.png", customClass: "h-40" },
-    { name: "Meta", src: "/logos/Meta_Logo.png", customClass: "h-50" },
-    { name: "TikTok", src: "/logos/tiktok_logo.png", customClass: "h-20" },
-    { name: "LinkedIn", src: "/logos/Linkedin_Logo.png", customClass: "h-45" },
-    { name: "X", src: "/logos/x_logo.png", customClass: "h-20" },
-    { name: "Instagram", src: "/logos/instagram_logo.png", customClass: "h-18" },
-    { name: "YouTube", src: "/logos/youtube_logo.png", customClass: "h-46" },
-    { name: "WhatsApp", src: "/logos/whatsapp_logo.png", customClass: "h-20" },
-    { name: "Telegram", src: "/logos/telegram_logo.png", customClass: "h-20" },
-    { name: "Taboola", src: "/logos/taboola_logo.png", customClass: "h-40" },
-    { name: "Outbrain", src: "/logos/outbrain_logo.png", customClass: "h-30" },
+    { name: "Mononio AI", src: "/brand/Mononio_Logo.png", customClass: "h-50", width: 200, height: 50 },
+    { name: "Google Ads", src: "/logos/Google_Ads_Logo.png", customClass: "h-40", width: 160, height: 40 },
+    { name: "Meta", src: "/logos/Meta_Logo.png", customClass: "h-50", width: 200, height: 50 },
+    { name: "TikTok", src: "/logos/tiktok_logo.png", customClass: "h-20", width: 80, height: 20 },
+    { name: "LinkedIn", src: "/logos/Linkedin_Logo.png", customClass: "h-45", width: 180, height: 45 },
+    { name: "X", src: "/logos/x_logo.png", customClass: "h-20", width: 80, height: 20 },
+    { name: "Instagram", src: "/logos/instagram_logo.png", customClass: "h-18", width: 72, height: 18 },
+    { name: "YouTube", src: "/logos/youtube_logo.png", customClass: "h-46", width: 184, height: 46 },
+    { name: "WhatsApp", src: "/logos/whatsapp_logo.png", customClass: "h-20", width: 80, height: 20 },
+    { name: "Telegram", src: "/logos/telegram_logo.png", customClass: "h-20", width: 80, height: 20 },
+    { name: "Taboola", src: "/logos/taboola_logo.png", customClass: "h-40", width: 160, height: 40 },
+    { name: "Outbrain", src: "/logos/outbrain_logo.png", customClass: "h-30", width: 120, height: 30 },
   ];
 
   // Duplicate logos to create seamless infinite scroll
@@ -28,10 +31,17 @@ export default function LogoCloud() {
           <div className="logo-track">
             {duplicatedLogos.map((logo, index) => (
               <div key={index} className="logo-item">
-                <img
+                <Image
                   className={`w-auto object-contain ${logo.customClass}`}
                   src={logo.src}
                   alt={logo.name}
+                  width={logo.width}
+                  height={logo.height}
+                  {...(logo.src.includes("/brand/Mononio_Logo.png") 
+                    ? { priority: true } 
+                    : { loading: "lazy" }
+                  )}
+                  sizes="(max-width: 768px) 80px, 200px" // Desktop-only sizing
                 />
               </div>
             ))}

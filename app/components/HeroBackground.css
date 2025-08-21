@@ -12,7 +12,7 @@
               radial-gradient(circle at 80% 60%, rgba(139, 92, 246, 0.35) 0%, transparent 55%),
               radial-gradient(circle at 60% 90%, rgba(236, 72, 153, 0.3) 0%, transparent 55%);
   background-size: 250% 250%;
-  animation: darkVeil 15s ease-in-out infinite alternate;
+  animation: heroGradient 15s ease-in-out infinite alternate;
   z-index: 0;
   filter: blur(120px) brightness(1.2);
 }
@@ -30,7 +30,7 @@
   animation: noiseMove 1.5s steps(2) infinite;
 }
 
-@keyframes darkVeil {
+@keyframes heroGradient {
   0% { background-position: 0% 40%; }
   50% { background-position: 100% 60%; }
   100% { background-position: 0% 40%; }

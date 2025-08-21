@@ -1,37 +1,52 @@
-import Link from "next/link";
+"use client";
+
+import React from "react";
+import CardNav, { CardNavItem } from "./CardNav";
+const logo = "/brand/Mononio_Logo.png";
 
 export default function Navbar() {
+  const items: CardNavItem[] = [
+    {
+      label: "About",
+      bgColor: "#0D0716",
+      textColor: "#fff",
+      links: [
+        { label: "Our Vision", href: "#about", ariaLabel: "About Mononio AI" },
+        { label: "Customer Stories", href: "#about", ariaLabel: "Customer Stories" },
+        { label: "FAQ", href: "#about", ariaLabel: "Frequently Asked Questions" },
+      ],
+    },
+    {
+      label: "Platform", // 🔥 updated name instead of Product
+      bgColor: "#170D27",
+      textColor: "#fff",
+      links: [
+        { label: "Features", href: "#platform", ariaLabel: "Platform Features" },
+        { label: "Pricing", href: "#platform", ariaLabel: "Platform Pricing" },
+        { label: "Integrations", href: "#platform", ariaLabel: "Platform Integrations" },
+      ],
+    },
+    {
+      label: "Contact",
+      bgColor: "#271E37",
+      textColor: "#fff",
+      links: [
+        { label: "Contact Us", href: "#contact", ariaLabel: "Contact Us" },
+        { label: "Book a Demo", href: "#contact", ariaLabel: "Book a Demo" },
+        { label: "Press & Media", href: "#contact", ariaLabel: "Press & Media" },
+      ],
+    },
+  ];
+
   return (
-    <nav className="bg-gray-900 border-b border-gray-800">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-white">
-            Mononio AI
-          </Link>
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/features" className="text-gray-300 hover:text-white transition-colors">
-              Features
-            </Link>
-            <Link href="/pricing" className="text-gray-300 hover:text-white transition-colors">
-              Pricing
-            </Link>
-            <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
-              Contact
-            </Link>
-            <Link href="/faq" className="text-gray-300 hover:text-white transition-colors">
-              FAQ
-            </Link>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link href="/signin" className="text-gray-300 hover:text-white transition-colors">
-              Sign in
-            </Link>
-            <Link href="/app/onboarding/1" className="bg-white text-gray-900 font-semibold px-4 py-2 rounded-md hover:bg-gray-200 transition-colors">
-              Get started
-            </Link>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <CardNav
+      logo={logo}
+      logoAlt="Mononio AI"
+      items={items}
+      baseColor="#fff"
+      menuColor="#000"
+      buttonBgColor="#6D28D9"
+      buttonTextColor="#fff"
+    />
   );
-} 
+}

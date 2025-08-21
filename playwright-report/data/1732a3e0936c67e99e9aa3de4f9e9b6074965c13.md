@@ -1,0 +1,50 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e6]:
+      - generic [ref=e8]:
+        - link "Mononio AI" [ref=e9]:
+          - /url: /
+          - img "Mononio AI" [ref=e10]
+        - generic [ref=e11]:
+          - link "Sign in" [ref=e12]:
+            - /url: /signin
+          - link "Get started" [ref=e13]:
+            - /url: /app/onboarding/1
+    - generic [ref=e14]:
+      - paragraph [ref=e16]: הפלטפורמה החכמה שמעצימה את העסק שלך עם בינה מלאכותית מתקדמת.
+      - generic [ref=e18]:
+        - button "Get started" [ref=e19]
+        - link "See features" [ref=e20]:
+          - /url: /features
+  - main [ref=e22]:
+    - generic [ref=e24]:
+      - heading "Deploy campaigns across the platforms you already use" [level=2] [ref=e25]
+      - generic [ref=e27]:
+        - img "Mononio AI" [ref=e29]
+        - img "Google Ads" [ref=e31]
+        - img "Meta" [ref=e33]
+        - img "TikTok" [ref=e35]
+        - img "LinkedIn" [ref=e37]
+        - img "X" [ref=e39]
+        - img "Instagram" [ref=e41]
+        - img "YouTube" [ref=e43]
+        - img "WhatsApp" [ref=e45]
+        - img "Telegram" [ref=e47]
+        - img "Taboola" [ref=e49]
+        - img "Outbrain" [ref=e51]
+        - img "Mononio AI" [ref=e53]
+        - img "Google Ads" [ref=e55]
+        - img "Meta" [ref=e57]
+        - img "TikTok" [ref=e59]
+        - img "LinkedIn" [ref=e61]
+        - img "X" [ref=e63]
+        - img "Instagram" [ref=e65]
+        - img "YouTube" [ref=e67]
+        - img "WhatsApp" [ref=e69]
+        - img "Telegram" [ref=e71]
+        - img "Taboola" [ref=e73]
+        - img "Outbrain" [ref=e75]
+```
