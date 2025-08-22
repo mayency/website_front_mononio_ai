@@ -12,7 +12,11 @@ export default function Navbar() {
       textColor: "#fff",
       links: [
         { label: "Our Vision", href: "#about", ariaLabel: "About Mononio AI" },
-        { label: "Customer Stories", href: "#about", ariaLabel: "Customer Stories" },
+        {
+          label: "Customer Stories",
+          href: "#about",
+          ariaLabel: "Customer Stories",
+        },
         { label: "FAQ", href: "#about", ariaLabel: "Frequently Asked Questions" },
       ],
     },
@@ -23,7 +27,11 @@ export default function Navbar() {
       links: [
         { label: "Features", href: "#platform", ariaLabel: "Platform Features" },
         { label: "Pricing", href: "#platform", ariaLabel: "Platform Pricing" },
-        { label: "Integrations", href: "#platform", ariaLabel: "Platform Integrations" },
+        {
+          label: "Integrations",
+          href: "#platform",
+          ariaLabel: "Platform Integrations",
+        },
       ],
     },
     {
@@ -39,14 +47,16 @@ export default function Navbar() {
   ];
 
   return (
-    <CardNav
-      logo={logo}
-      logoAlt="Mononio AI"
-      items={items}
-      baseColor="#fff"
-      menuColor="#000"
-      buttonBgColor="#6D28D9"
-      buttonTextColor="#fff"
-    />
+    <div className="relative z-[9999]">
+      <CardNav
+        logo={logo}
+        logoAlt="Mononio AI"
+        items={items}
+        baseColor="#fff"
+        menuColor="#000"
+        buttonBgColor="#6D28D9"
+        buttonTextColor="#fff"
+      />
+    </div>
   );
 }

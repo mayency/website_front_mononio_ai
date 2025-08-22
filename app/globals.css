@@ -38,3 +38,26 @@ body {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* 🌟 Woman Jumping Overlay */
+.woman-jumping {
+  -webkit-mask-image: url("/woman_jumping.png");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-image: url("/woman_jumping.png");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  background: linear-gradient(270deg, #ff00ff, #00ffff, #ff9900, #6600ff);
+  background-size: 800% 800%;
+  animation: gradientFlow 10s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
