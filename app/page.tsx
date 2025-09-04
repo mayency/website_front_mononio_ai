@@ -1,5 +1,3 @@
-"use client";
-
 import Navbar from "./components/Navbar";
 import LogoCloud from "./components/LogoCloud";
 import CampaignBox from "./components/CampaignBox";
@@ -107,7 +105,7 @@ export default function Home() {
       >
         <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
         <p className="max-w-2xl mx-auto text-lg text-gray-300 mb-8">
-          Have questions or want to see Mononio in action? Reach out and let’s
+          Have questions or want to see Mononio in action? Reach out and let's
           make something amazing together.
         </p>
         <div className="flex justify-center gap-6">
