@@ -1,10 +1,15 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import { useAuth } from "../hooks/useAuth";
 import CardNav, { CardNavItem } from "./CardNav";
+
 const logo = "/brand/Mononio_Logo.png";
 
 export default function Navbar() {
+  const { isAuthenticated, user, logout } = useAuth();
+
   const items: CardNavItem[] = [
     {
       label: "About",
@@ -35,16 +40,33 @@ export default function Navbar() {
       ],
     },
     {
-      label: "Contact",
+      label: isAuthenticated ? "Account" : "Contact",
       bgColor: "#271E37",
       textColor: "#fff",
-      links: [
+      links: isAuthenticated ? [
+        { label: "Dashboard", href: "/app", ariaLabel: "Go to Dashboard" },
+        { label: `Welcome, ${user?.name || user?.email}`, href: "/app", ariaLabel: "User Profile" },
+        { label: "Logout", href: "#", ariaLabel: "Logout" },
+      ] : [
         { label: "Contact Us", href: "#contact", ariaLabel: "Contact Us" },
         { label: "Book a Demo", href: "#contact", ariaLabel: "Book a Demo" },
         { label: "Press & Media", href: "#contact", ariaLabel: "Press & Media" },
       ],
     },
   ];
+
+  // Add auth buttons if not authenticated
+  if (!isAuthenticated) {
+    items.push({
+      label: "Sign In",
+      bgColor: "#6D28D9",
+      textColor: "#fff",
+      links: [
+        { label: "Login", href: "/login", ariaLabel: "Login to your account" },
+        { label: "Sign Up", href: "/signup", ariaLabel: "Create new account" },
+      ],
+    });
+  }
 
   return (
     <div className="relative z-[9999]">

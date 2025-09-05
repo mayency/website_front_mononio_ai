@@ -1,0 +1,176 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e9]:
+      - link "Go to homepage" [ref=e12] [cursor=pointer]:
+        - /url: /
+        - img "Mononio AI Logo" [ref=e13] [cursor=pointer]
+    - generic [ref=e15]:
+      - img "Mononio AI" [ref=e17]
+      - heading "AI-Powered MarketingThat Delivers Results" [level=1] [ref=e18]:
+        - text: AI-Powered Marketing
+        - generic [ref=e19]: That Delivers Results
+      - paragraph [ref=e20]: Automate your campaigns across all major platforms with intelligent AI agents. Save time, increase ROI, and scale effortlessly.
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - img [ref=e23]
+          - generic [ref=e25]: 10x Better ROI
+        - generic [ref=e26]:
+          - img [ref=e27]
+          - generic [ref=e29]: No Credit Card
+        - generic [ref=e30]:
+          - img [ref=e31]
+          - generic [ref=e33]: 5-Min Setup
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - textbox "Campaign description" [ref=e39]
+          - generic [ref=e40]: Describe your business, target audience, and goals to help our AI create an optimized campaign for you. You can also use voice input by clicking the microphone button.
+        - generic [ref=e41]: Voice input not supported in your browser. Please type your campaign description.
+        - button "Create my campaign" [disabled] [ref=e42]
+        - paragraph [ref=e43]: Free consultation • No commitment required
+      - generic [ref=e44]:
+        - paragraph [ref=e45]: Trusted by 500+ marketing teams
+        - generic [ref=e46]:
+          - img [ref=e47]
+          - img [ref=e49]
+          - img [ref=e51]
+          - img [ref=e53]
+          - img [ref=e55]
+          - generic [ref=e57]: 4.9/5 rating
+    - img [ref=e59]
+  - generic [ref=e63]:
+    - generic [ref=e64]:
+      - generic [ref=e65]: 10x
+      - generic [ref=e66]: Average ROI
+    - generic [ref=e67]:
+      - generic [ref=e68]: 500+
+      - generic [ref=e69]: Happy Clients
+    - generic [ref=e70]:
+      - generic [ref=e71]: 24/7
+      - generic [ref=e72]: AI Optimization
+    - generic [ref=e73]:
+      - generic [ref=e74]: 5min
+      - generic [ref=e75]: Setup Time
+  - generic [ref=e78]:
+    - generic [ref=e80]:
+      - heading "About Mononio AI" [level=2] [ref=e81]
+      - paragraph [ref=e82]: Revolutionizing multi-channel marketing with intelligent AI agents that automate your campaigns across all major platforms.
+    - generic [ref=e84]:
+      - heading "Technology" [level=3] [ref=e85]
+      - paragraph [ref=e86]: Our AI-powered platform uses advanced machine learning algorithms to optimize your campaigns across multiple channels simultaneously.
+    - generic [ref=e88]:
+      - heading "Performance" [level=3] [ref=e89]
+      - paragraph [ref=e90]: Achieve 10x better results with our intelligent optimization engine that learns and adapts to your unique business needs.
+    - generic [ref=e92]:
+      - heading "Integration" [level=3] [ref=e93]
+      - paragraph [ref=e94]: Seamlessly connect with major advertising platforms including Google Ads, Facebook, LinkedIn, Taboola, and Outbrain.
+    - generic [ref=e96]:
+      - heading "Get Started" [level=3] [ref=e97]
+      - paragraph [ref=e98]: Ready to transform your marketing? Contact us today to schedule a demo and see how Mononio AI can revolutionize your campaigns.
+      - button "Schedule Demo" [ref=e100]
+  - generic [ref=e102]:
+    - heading "The Mononio Platform" [level=2] [ref=e103]
+    - paragraph [ref=e104]: Discover our features, pricing, and integrations that help you run campaigns smarter and faster.
+    - generic [ref=e105]: Loading...
+  - generic [ref=e107]:
+    - heading "Get in Touch" [level=2] [ref=e108]
+    - paragraph [ref=e109]: Ready to transform your marketing? Let's discuss how Mononio AI can help your business grow.
+    - button "Contact Us" [ref=e110]
+  - generic [ref=e112]:
+    - heading "Deploy campaigns across the platforms you already use" [level=2] [ref=e113]
+    - generic [ref=e115]:
+      - img "Facebook" [ref=e117]
+      - img "Google Ads" [ref=e119]
+      - img "Meta" [ref=e121]
+      - img "TikTok" [ref=e123]
+      - img "LinkedIn" [ref=e125]
+      - img "X" [ref=e127]
+      - img "Instagram" [ref=e129]
+      - img "YouTube" [ref=e131]
+      - img "WhatsApp" [ref=e133]
+      - img "Telegram" [ref=e135]
+      - img "Taboola" [ref=e137]
+      - img "Outbrain" [ref=e139]
+      - img "Facebook" [ref=e141]
+      - img "Google Ads" [ref=e143]
+      - img "Meta" [ref=e145]
+      - img "TikTok" [ref=e147]
+      - img "LinkedIn" [ref=e149]
+      - img "X" [ref=e151]
+      - img "Instagram" [ref=e153]
+      - img "YouTube" [ref=e155]
+      - img "WhatsApp" [ref=e157]
+      - img "Telegram" [ref=e159]
+      - img "Taboola" [ref=e161]
+      - img "Outbrain" [ref=e163]
+      - img "Facebook" [ref=e165]
+      - img "Google Ads" [ref=e167]
+      - img "Meta" [ref=e169]
+      - img "TikTok" [ref=e171]
+      - img "LinkedIn" [ref=e173]
+      - img "X" [ref=e175]
+      - img "Instagram" [ref=e177]
+      - img "YouTube" [ref=e179]
+      - img "WhatsApp" [ref=e181]
+      - img "Telegram" [ref=e183]
+      - img "Taboola" [ref=e185]
+      - img "Outbrain" [ref=e187]
+      - img "Facebook" [ref=e189]
+      - img "Google Ads" [ref=e191]
+      - img "Meta" [ref=e193]
+      - img "TikTok" [ref=e195]
+      - img "LinkedIn" [ref=e197]
+      - img "X" [ref=e199]
+      - img "Instagram" [ref=e201]
+      - img "YouTube" [ref=e203]
+      - img "WhatsApp" [ref=e205]
+      - img "Telegram" [ref=e207]
+      - img "Taboola" [ref=e209]
+      - img "Outbrain" [ref=e211]
+  - contentinfo [ref=e212]:
+    - generic [ref=e213]:
+      - generic [ref=e214]:
+        - generic [ref=e215]:
+          - link "Mononio AI Logo" [ref=e216] [cursor=pointer]:
+            - /url: /
+            - img "Mononio AI Logo" [ref=e217] [cursor=pointer]
+          - paragraph [ref=e218]: Transform your marketing campaigns with Mononio AI. Create, optimize, and scale your campaigns across multiple channels with intelligent AI agents.
+        - generic [ref=e219]:
+          - heading "Quick Links" [level=3] [ref=e220]
+          - list [ref=e221]:
+            - listitem [ref=e222]:
+              - link "Marketing" [ref=e223] [cursor=pointer]:
+                - /url: /marketing
+            - listitem [ref=e224]:
+              - link "Pricing" [ref=e225] [cursor=pointer]:
+                - /url: /marketing/pricing
+            - listitem [ref=e226]:
+              - link "About" [ref=e227] [cursor=pointer]:
+                - /url: "#about"
+            - listitem [ref=e228]:
+              - link "Contact" [ref=e229] [cursor=pointer]:
+                - /url: "#contact"
+        - generic [ref=e230]:
+          - heading "Legal" [level=3] [ref=e231]
+          - list [ref=e232]:
+            - listitem [ref=e233]:
+              - link "Privacy Policy" [ref=e234] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e235]:
+              - link "Terms of Service" [ref=e236] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e237]:
+              - link "Accessibility" [ref=e238] [cursor=pointer]:
+                - /url: /accessibility
+      - generic [ref=e239]:
+        - paragraph [ref=e240]: © 2025 Mononio AI. All rights reserved.
+        - generic [ref=e241]:
+          - link "Privacy" [ref=e242] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e243] [cursor=pointer]:
+            - /url: /terms
+          - link "Accessibility" [ref=e244] [cursor=pointer]:
+            - /url: /accessibility
+```

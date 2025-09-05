@@ -1,0 +1,43 @@
+'use client';
+
+import React from 'react';
+
+const AnimatedStats = () => {
+  return (
+    <section className="bg-gray-900 py-16 px-4 sm:px-6 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="space-y-2 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              10x
+            </div>
+            <div className="text-sm text-gray-400">Average ROI</div>
+          </div>
+          
+          <div className="space-y-2 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+            <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              500+
+            </div>
+            <div className="text-sm text-gray-400">Happy Clients</div>
+          </div>
+          
+          <div className="space-y-2 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              24/7
+            </div>
+            <div className="text-sm text-gray-400">AI Optimization</div>
+          </div>
+          
+          <div className="space-y-2 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
+            <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              5min
+            </div>
+            <div className="text-sm text-gray-400">Setup Time</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AnimatedStats;

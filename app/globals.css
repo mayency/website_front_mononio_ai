@@ -19,11 +19,21 @@
   }
 }
 
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-white text-black dark:bg-black dark:text-white;
   font-family: Arial, Helvetica, sans-serif;
+  /* Optimize for performance */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ✨ אנימציית ברק */
 @keyframes shine {
   0% {
     background-position: -200% 0;
@@ -33,31 +43,107 @@ body {
   }
 }
 
+/* ✨ אנימציית מתכתית */
 @keyframes metallic-shine {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-/* 🌟 Woman Jumping Overlay */
-.woman-jumping {
-  -webkit-mask-image: url("/woman_jumping.png");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-
-  mask-image: url("/woman_jumping.png");
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-
-  background: linear-gradient(270deg, #ff00ff, #00ffff, #ff9900, #6600ff);
-  background-size: 800% 800%;
-  animation: gradientFlow 10s ease infinite;
+/* Optimize video loading */
+video {
+  object-fit: cover;
+  will-change: transform;
 }
 
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Improve focus states for accessibility */
+*:focus {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 2px;
+}
+
+/* Optimize images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hero Animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from { 
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.4; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s ease-out;
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-800 {
+  animation-delay: 800ms;
 }

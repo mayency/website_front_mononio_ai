@@ -3,6 +3,8 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { GoArrowUpRight } from "react-icons/go";
+import { useAuth } from "../hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 type CardNavLink = {
   label: string;
@@ -45,6 +47,8 @@ const CardNav: React.FC<CardNavProps> = ({
   const navRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const { logout } = useAuth();
+  const router = useRouter();
 
   const calculateHeight = () => {
     const navEl = navRef.current;
@@ -156,6 +160,27 @@ const CardNav: React.FC<CardNavProps> = ({
     }
   };
 
+  const handleLinkClick = (e: React.MouseEvent, href: string, label: string) => {
+    e.stopPropagation();
+    
+    if (label === "Logout") {
+      logout();
+      router.push("/");
+      return;
+    }
+    
+    if (href.startsWith("#")) {
+      // Handle anchor links
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Handle regular navigation
+      router.push(href);
+    }
+  };
+
   const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
     if (el) cardsRef.current[i] = el;
   };
@@ -170,19 +195,37 @@ const CardNav: React.FC<CardNavProps> = ({
         onClick={toggleMenu}
         className={`card-nav ${
           isExpanded ? "open" : ""
-        } block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height] bg-white dark:bg-gray-900`}
+        } block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height] bg-white dark:bg-gray-900 cursor-pointer`}
+        style={{height: isExpanded ? calculateHeight() : 60}}
       >
-        <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] z-[2]">
+        <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between px-4 z-[2]">
+          <div className="w-6"></div>
           {/* הלוגו - לא מפעיל toggle */}
           <div
-            className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none"
+            className="logo-container flex items-center justify-center flex-1 py-3"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={logo}
-              alt={logoAlt}
-              className="logo max-h-[130px] object-contain"
-            />
+            <a
+              href="/"
+              aria-label="Go to homepage"
+              tabIndex={0}
+              className="focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/30 focus-visible:ring-offset-2 rounded-lg"
+            >
+              <img
+                src={logo}
+                alt={logoAlt}
+                width="120"
+                height="40"
+                className="h-[50px] sm:h-[60px] w-auto object-contain drop-shadow-xl transition-transform hover:scale-105"
+              />
+            </a>
+          </div>
+          <div className="flex items-center justify-center w-6 h-6 opacity-60 hover:opacity-100 transition-opacity">
+            <div className="space-y-1">
+              <div className="w-4 h-0.5 bg-gray-600 dark:bg-gray-300"></div>
+              <div className="w-4 h-0.5 bg-gray-600 dark:bg-gray-300"></div>
+              <div className="w-4 h-0.5 bg-gray-600 dark:bg-gray-300"></div>
+            </div>
           </div>
         </div>
 
@@ -195,7 +238,7 @@ const CardNav: React.FC<CardNavProps> = ({
           } md:flex-row md:items-end md:gap-[12px]`}
           aria-hidden={!isExpanded}
         >
-          {(items || []).slice(0, 3).map((item, idx) => (
+          {(items || []).slice(0, 4).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
               className="nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%]"
@@ -207,19 +250,19 @@ const CardNav: React.FC<CardNavProps> = ({
               </div>
               <div className="nav-card-links mt-auto flex flex-col gap-[2px]">
                 {item.links?.map((lnk, i) => (
-                  <a
+                  <button
                     key={`${lnk.label}-${i}`}
-                    className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
-                    href={lnk.href}
+                    className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px] text-left border-none bg-transparent"
                     aria-label={lnk.ariaLabel}
-                    onClick={(e) => e.stopPropagation()} // לינק לא מפעיל toggle
+                    onClick={(e) => handleLinkClick(e, lnk.href, lnk.label)}
+                    style={{ color: 'inherit' }}
                   >
                     <GoArrowUpRight
                       className="nav-card-link-icon shrink-0"
                       aria-hidden="true"
                     />
                     {lnk.label}
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>
