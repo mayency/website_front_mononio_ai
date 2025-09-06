@@ -1,7 +1,10 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { gsap } from "gsap";
+import gsap from "gsap";
+import { GoArrowUpRight } from "react-icons/go";
+import { useAuth } from "../hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 export interface MagicBentoCard {
   color?: string;

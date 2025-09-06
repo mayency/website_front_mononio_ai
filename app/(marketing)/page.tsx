@@ -1,20 +1,12 @@
 import React from "react";
 import Image from "next/image";
+import VideoBackground from "../components/VideoBackground";
 
 export default function MarketingPage() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black w-full">
       {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/videos/Abstract_Neon_Clouds1.mp4" type="video/mp4" />
-      </video>
+      <VideoBackground />
 
       {/* Overlay for better readability */}
       <div className="absolute inset-0 bg-black/40 z-0" />
@@ -26,7 +18,7 @@ export default function MarketingPage() {
           alt="Mononio AI Logo"
           width={288}
           height={288}
-          className="mx-auto mb-6 w-48 md:w-64 lg:w-72 drop-shadow-lg"
+          className="mx-auto mb-6 w-48 md:w-62 lg:w-72 drop-shadow-lg"
           priority
         />
         <p className="text-lg mb-8 max-w-xl mx-auto">

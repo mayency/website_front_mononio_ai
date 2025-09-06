@@ -1,9 +1,7 @@
-"use client";
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { AuthProvider } from "./hooks/useAuth";
+import Providers from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,24 +13,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: "Mononio AI - AI-Powered Marketing Campaign Management",
+  description: "Transform your marketing campaigns with Mononio AI. Create, optimize, and scale your campaigns across multiple channels with intelligent AI agents.",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <title>Mononio AI - AI-Powered Marketing Campaign Management</title>
-        <meta name="description" content="Transform your marketing campaigns with Mononio AI. Create, optimize, and scale your campaigns across multiple channels with intelligent AI agents." />
-      </head>
+    <html lang="he" dir="rtl">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning={true}
       >
-        <AuthProvider>
+        <Providers>
           {children}
-        </AuthProvider>
+        </Providers>
       </body>
     </html>
   );

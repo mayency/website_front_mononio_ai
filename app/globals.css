@@ -74,6 +74,11 @@ img {
   height: auto;
 }
 
+/* Allow specific height control for navigation logos */
+.logo-container img {
+  height: unset;
+}
+
 /* Hero Animations */
 @keyframes fade-in {
   from { opacity: 0; }
