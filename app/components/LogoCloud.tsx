@@ -1,3 +1,4 @@
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -44,24 +45,6 @@ export default function LogoCloud() {
         </div>
       </div>
       
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-        
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </div>
   );
 }
