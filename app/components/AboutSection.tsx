@@ -17,7 +17,8 @@ export default function AboutSection() {
 
       {/* Main Principles Grid */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* 👇 Force left-to-right order so the first item appears on the left */}
+        <div dir="ltr" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {/* M - Mastery (1st) */}
           <div className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 border border-purple-400/30 rounded-xl p-6 hover:border-purple-400/50 transition-all duration-300 hover:scale-105">
             <div className="text-center">
@@ -30,7 +31,7 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
-
+          
           {/* O - Optimization (2nd) */}
           <div className="bg-gradient-to-br from-blue-600/20 to-blue-800/20 border border-blue-400/30 rounded-xl p-6 hover:border-blue-400/50 transition-all duration-300 hover:scale-105">
             <div className="text-center">
@@ -43,7 +44,7 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
-
+          
           {/* N - Network (3rd) */}
           <div className="bg-gradient-to-br from-teal-600/20 to-teal-800/20 border border-teal-400/30 rounded-xl p-6 hover:border-teal-400/50 transition-all duration-300 hover:scale-105">
             <div className="text-center">
@@ -56,7 +57,7 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
-
+          
           {/* O - Orchestration (4th) */}
           <div className="bg-gradient-to-br from-green-600/20 to-green-800/20 border border-green-400/30 rounded-xl p-6 hover:border-green-400/50 transition-all duration-300 hover:scale-105">
             <div className="text-center">
@@ -69,7 +70,7 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
-
+          
           {/* N - Nimbleness (5th) */}
           <div className="bg-gradient-to-br from-yellow-600/20 to-yellow-800/20 border border-yellow-400/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300 hover:scale-105">
             <div className="text-center">
@@ -82,7 +83,7 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
-
+          
           {/* I - Intelligence (6th) */}
           <div className="bg-gradient-to-br from-red-600/20 to-red-800/20 border border-red-400/30 rounded-xl p-6 hover:border-red-400/50 transition-all duration-300 hover:scale-105">
             <div className="text-center">
@@ -95,7 +96,7 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
-
+          
           {/* O - Omnipresence (7th) */}
           <div className="bg-gradient-to-br from-indigo-600/20 to-indigo-800/20 border border-indigo-400/30 rounded-xl p-6 hover:border-indigo-400/50 transition-all duration-300 hover:scale-105">
             <div className="text-center">
@@ -120,8 +121,9 @@ export default function AboutSection() {
               The "AI" in Mononio AI stands for the additional forces that define our quality and values:
             </p>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          {/* 👇 Keep A (left) and I (right) even if the page is RTL */}
+          <div dir="ltr" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* A - Autonomy (Left) */}
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 border border-purple-400/30 rounded-2xl p-8 hover:border-purple-400/50 transition-all duration-300 hover:scale-105">
               <div className="flex items-start space-x-4">
@@ -137,7 +139,7 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-
+            
             {/* I - Integrity (Right) */}
             <div className="bg-gradient-to-br from-blue-600/20 to-teal-600/20 border border-blue-400/30 rounded-2xl p-8 hover:border-blue-400/50 transition-all duration-300 hover:scale-105">
               <div className="flex items-start space-x-4">
