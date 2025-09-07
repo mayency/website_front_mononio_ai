@@ -169,3 +169,36 @@ img {
 .animate-scroll:hover {
   animation-play-state: paused;
 }
+
+
+/* LogoCloud scroll animation */
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-logos {
+  animation: scroll-logos 40s linear infinite;
+  width: max-content;
+}
+
+.animate-scroll-logos:hover {
+  animation-play-state: paused;
+}
+
+/* Ensure smooth animation on all screen sizes */
+@media (min-width: 1920px) {
+  .animate-scroll-logos {
+    animation-duration: 50s;
+  }
+}
+
+@media (min-width: 2560px) {
+  .animate-scroll-logos {
+    animation-duration: 60s;
+  }
+}
