@@ -1,17 +1,16 @@
-"use client";
 
 import React from "react";
 import Image from "next/image";
 
 export default function LogoCloud() {
   const logos = [
-    { name: "Facebook", src: "/logos/facebook_logo.png", width: 200, height: 80 },
-    { name: "Google Ads", src: "/logos/Google_Ads_Logo.png", width: 160, height: 80 },
+    { name: "Facebook", src: "/logos/facebook_logo.png", width: 120, height: 80 },
+    { name: "Google Ads", src: "/logos/Google_Ads_Logo.png", width: 140, height: 80 },
     { name: "Meta", src: "/logos/Meta_Logo.png", width: 200, height: 80 },
     { name: "TikTok", src: "/logos/tiktok_logo.png", width: 120, height: 80 },
     { name: "LinkedIn", src: "/logos/Linkedin_Logo.png", width: 180, height: 80 },
-    { name: "X", src: "/logos/x_logo.png", width: 80, height: 80 },
-    { name: "Instagram", src: "/logos/instagram_logo.png", width: 80, height: 80 },
+    { name: "X", src: "/logos/x_logo.png", width: 120, height: 80 },
+    { name: "Instagram", src: "/logos/instagram_logo.png", width: 120, height: 80 },
     { name: "YouTube", src: "/logos/youtube_logo.png", width: 184, height: 80 },
     { name: "WhatsApp", src: "/logos/whatsapp_logo.png", width: 120, height: 80 },
     { name: "Telegram", src: "/logos/telegram_logo.png", width: 120, height: 80 },
