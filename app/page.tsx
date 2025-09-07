@@ -60,11 +60,15 @@ export default function Home() {
 
             {/* Main Headline */}
             <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white animate-slide-up leading-tight">
-              AI-Powered Marketing
+              Marketing as an Autonomous Force.
               <span className="block bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mt-2">
-                That Delivers Results
+                Your Private Digital Agency. Always Optimizing.
               </span>
             </h1>
+            
+            <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-white opacity-80 animate-fade-in-up">
+              Unlock Unprecedented Efficiency. Get Started Now.
+            </p>
 
             {/* Subheadline */}
             <p className="mb-8 max-w-2xl text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 animate-slide-up animation-delay-200 px-4">
