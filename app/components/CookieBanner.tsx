@@ -22,17 +22,19 @@ export default function CookieBanner() {
 
   useEffect(() => {
     // בדיקה אם המשתמש כבר נתן הסכמה
-    const consent = localStorage.getItem('cookieConsent');
-    if (!consent) {
-      setShowBanner(true);
-    } else {
-      // טעינת העדפות קיימות
-      try {
-        const savedPrefs = JSON.parse(consent);
-        setPreferences(savedPrefs);
-        applyCookiePreferences(savedPrefs);
-      } catch {
+    if (typeof window !== 'undefined') {
+      const consent = localStorage.getItem('cookieConsent');
+      if (!consent) {
         setShowBanner(true);
+      } else {
+        // טעינת העדפות קיימות
+        try {
+          const savedPrefs = JSON.parse(consent);
+          setPreferences(savedPrefs);
+          applyCookiePreferences(savedPrefs);
+        } catch {
+          setShowBanner(true);
+        }
       }
     }
   }, []);
@@ -75,8 +77,10 @@ export default function CookieBanner() {
       functional: true,
     };
     
-    localStorage.setItem('cookieConsent', JSON.stringify(allAccepted));
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cookieConsent', JSON.stringify(allAccepted));
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    }
     setPreferences(allAccepted);
     applyCookiePreferences(allAccepted);
     setShowBanner(false);
@@ -89,8 +93,10 @@ export default function CookieBanner() {
   };
 
   const handleAcceptSelected = () => {
-    localStorage.setItem('cookieConsent', JSON.stringify(preferences));
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cookieConsent', JSON.stringify(preferences));
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    }
     applyCookiePreferences(preferences);
     setShowBanner(false);
     
@@ -111,8 +117,10 @@ export default function CookieBanner() {
       functional: false,
     };
     
-    localStorage.setItem('cookieConsent', JSON.stringify(rejected));
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cookieConsent', JSON.stringify(rejected));
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    }
     setPreferences(rejected);
     applyCookiePreferences(rejected);
     setShowBanner(false);

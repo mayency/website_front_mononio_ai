@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useLayoutEffect, useRef, useState, useCallback, useEffect } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import gsap from "gsap";
 import { GoArrowUpRight } from "react-icons/go";
 import { useAuth } from "../hooks/useAuth";
@@ -39,10 +38,6 @@ const CardNav: React.FC<CardNavProps> = ({
   items,
   className = "",
   ease = "power3.out",
-  baseColor = "#fff",
-  menuColor,
-  buttonBgColor,
-  buttonTextColor,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const navRef = useRef<HTMLDivElement | null>(null);
@@ -137,6 +132,13 @@ const CardNav: React.FC<CardNavProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, [isExpanded, calculateHeight]);
 
+  const closeMenu = useCallback(() => {
+    if (!tlRef.current || isAnimatingRef.current) return;
+    
+    tlRef.current.reverse();
+    setIsExpanded(false);
+  }, []);
+
   // Click outside to close
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -156,14 +158,7 @@ const CardNav: React.FC<CardNavProps> = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isExpanded]);
-
-  const closeMenu = useCallback(() => {
-    if (!tlRef.current || isAnimatingRef.current) return;
-    
-    tlRef.current.reverse();
-    setIsExpanded(false);
-  }, []);
+  }, [isExpanded, closeMenu]);
 
   const toggleMenu = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
