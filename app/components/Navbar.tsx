@@ -73,6 +73,10 @@ export default function Navbar() {
         logo={logo}
         logoAlt="Mononio AI"
         items={items}
+        baseColor="#fff"
+        menuColor="#000"
+        buttonBgColor="#6D28D9"
+        buttonTextColor="#fff"
       />
     </div>
   );
