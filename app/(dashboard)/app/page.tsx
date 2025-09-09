@@ -60,7 +60,7 @@ export default function DashboardPage() {
               Welcome to your protected dashboard, {user?.name || user?.email}!
             </p>
             <p className="text-gray-400">
-              This is where you'll manage your marketing campaigns. The authentication system is now working properly.
+              This is where youyou&apos;ll manageapos;ll manage your marketing campaigns. The authentication system is now working properly.
             </p>
             
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">

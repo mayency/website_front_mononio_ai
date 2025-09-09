@@ -12,7 +12,7 @@ export default function LogoCloud() {
     { name: "LinkedIn", src: "/logos/Linkedin_Logo.png", width: 180, height: 80 },
     { name: "X", src: "/logos/x_logo.png", width: 80, height: 80 },
     { name: "Instagram", src: "/logos/instagram_logo.png", width: 80, height: 80 },
-    { name: "YouTube", src: "/logos/youtube_logo.png", width: 160, height: 80 },
+    { name: "YouTube", src: "/logos/youtube_logo.png", width: 140, height: 80 },
     { name: "WhatsApp", src: "/logos/whatsapp_logo.png", width: 80, height: 80 },
     { name: "Telegram", src: "/logos/telegram_logo.png", width: 80, height: 80 },
     { name: "Taboola", src: "/logos/taboola_logo.png", width: 160, height: 80 },
@@ -20,7 +20,7 @@ export default function LogoCloud() {
   ];
 
   return (
-    <div className="bg-gray-900 py-12 sm:py-16 overflow-hidden">
+    <div className="bg-gray-900 py-8 md:py-10 lg:py-12 xl:py-16 overflow-hidden">
       <div className="w-full">
         <h2 className="text-center text-lg font-semibold leading-8 text-gray-400 mb-10">
           Deploy campaigns across the platforms you already use
@@ -35,8 +35,11 @@ export default function LogoCloud() {
           {/* Two identical tracks (A follows B) */}
           <div className="marquee-viewport">
             <div className="marquee-track marquee-a">
-              {logos.map((logo) => (
-                <div key={`A-${logo.name}`} className="px-8 md:px-12 flex items-center">
+            {logos.map((logo, index) => (
+           <div 
+            key={`A-${logo.name}`} 
+            className={`px-8 md:px-12 flex items-center ${index > 5 ? 'hidden sm:flex' : ''}`}
+                 >
                   <Image
                     className="logo-img block w-auto object-contain
                                grayscale brightness-75 opacity-60
@@ -74,16 +77,46 @@ export default function LogoCloud() {
       </div>
 
       <style jsx>{`
-        /* גובה נדיב ל־viewport כדי שלא יהיה חיתוך אנכי */
-        .marquee-viewport {
-          position: relative;
-          height: 6.5rem;           /* 104px – אפשר להגדיל/להקטין לפי הטעם */
-        }
+        /* גובה מותאם למסכים שונים */
+.marquee-viewport {
+  position: relative;
+  height: 4.5rem;           /* 72px - למסכי מובייל */
+}
+@media (min-width: 768px) {
+  .marquee-viewport {
+    height: 5rem;           /* 80px - למסכי טאבלט */
+  }
+}
+@media (min-width: 1024px) {
+  .marquee-viewport {
+    height: 7.5rem;         /* 88px - למסכי לפטופ */
+  }
+}
+@media (min-width: 1920px) {
+  .marquee-viewport {
+    height: 6.5rem;         /* 104px - למסכים גדולים */
+  }
+}
 
-        /* גובה אחיד לכל הלוגואים – לא נגזר מגודל הקבצים עצמם */
-        .logo-img {
-          height: 4rem;             /* 64px */
-        }
+/* גובה לוגואים מותאם */
+.logo-img {
+  height: 2.5rem;           /* 40px - מובייל */
+}
+@media (min-width: 768px) {
+  .logo-img {
+    height: 3rem;           /* 48px - טאבלט */
+  }
+}
+@media (min-width: 1024px) {
+  .logo-img {
+    height: 3rem;         /* 56px - לפטופ */
+  }
+}
+@media (min-width: 1920px) {
+  .logo-img {
+    height: 4rem;         /* 72px - מסכים גדולים */
+  }
+}
         @media (min-width: 768px) {
           .logo-img {
             height: 4.75rem;        /* ~76px במסכים רחבים יותר */

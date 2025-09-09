@@ -21,7 +21,7 @@ export default function LoginPage() {
     try {
       await login(email, password);
       router.push("/app"); // Redirect to dashboard after successful login
-    } catch (err) {
+    } catch {
       setError("Invalid email or password");
     } finally {
       setIsSubmitting(false);
@@ -97,7 +97,7 @@ export default function LoginPage() {
               href="/signup"
               className="font-medium text-indigo-400 hover:text-indigo-300"
             >
-              Don't have an account? Sign up
+              DonDon&apos;t have an accountapos;t have an account? Sign up
             </Link>
           </div>
         </form>

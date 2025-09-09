@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useLayoutEffect, useRef, useCallback, ReactNode, memo, useState, useEffect } from "react";
-import { getBrowserConfig, ScrollStackConfig } from '../utils/browserCompat';
+import React, { useLayoutEffect, useRef, useCallback, ReactNode, memo } from "react";
 
 const ultraWideStyles = `
   .scroll-stack-container {
@@ -91,11 +90,11 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   stackPosition = "20%",
   scaleEndPosition = "10%",
   baseScale = 0.85,
-  // scaleDuration = 0.5, // unused
+  scaleDuration = 0.5,
   rotationAmount = 0,
   blurAmount = 0,
   onStackComplete,
-  enableScrollChaining = true,
+  enableScrollChaining = true, // ברירת מחדל: מופעל
 }) => {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const stackCompletedRef = useRef<boolean>(false);
@@ -103,23 +102,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const cardsRef = useRef<HTMLElement[]>([]);
   const lastTransformsRef = useRef<Map<number, Transform>>(new Map());
   const isUpdatingRef = useRef<boolean>(false);
-
-  // Default configuration for SSR - prevents hydration mismatch
-  const defaultConfig: ScrollStackConfig = {
-    pinEndMultiplier: 0.8,
-    maxTranslateY: 0.65,
-    scrollBehavior: 'smooth',
-    useHardwareAcceleration: true,
-    containerHeight: 'min(85vh, 750px)'
-  };
-
-  // Browser-specific configuration - only applied after hydration
-  const [browserConfig, setBrowserConfig] = useState<ScrollStackConfig>(defaultConfig);
-
-  // Apply browser-specific configuration after hydration
-  useEffect(() => {
-    setBrowserConfig(getBrowserConfig());
-  }, []);
 
   const calculateProgress = useCallback((scrollTop: number, start: number, end: number): number => {
     if (scrollTop < start) return 0;
@@ -161,11 +143,11 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = cardTop - stackPositionPx - (itemStackDistance * i);
       
-      // Use browser-specific configuration for the last card
+      // משוואה מהגרסה הישנה - pin end שונה לכרטיס אחרון
       let pinEnd: number;
       if (i === cardsRef.current.length - 1) {
-        // Use browser-specific configuration for the last card
-        pinEnd = endElementTop - (containerHeight * browserConfig.pinEndMultiplier);
+        // הכרטיסיה האחרונה תישאר pinned יותר זמן
+        pinEnd = endElementTop - containerHeight * 0.8;
       } else {
         pinEnd = endElementTop - containerHeight / 2;
       }
@@ -202,14 +184,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         translateY = scrollTop - cardTop + stackPositionPx + (itemStackDistance * i) - 80;
       } else if (scrollTop > pinEnd) {
         translateY = pinEnd - cardTop + stackPositionPx + (itemStackDistance * i) - 80;
-      }
-
-      // Add boundary limiting for translateY for the last card
-      if (i === cardsRef.current.length - 1) {
-        const maxAllowedTranslate = containerHeight * browserConfig.maxTranslateY;
-        if (translateY > maxAllowedTranslate) {
-          translateY = maxAllowedTranslate;
-        }
       }
 
       // אופטימיזציה מהגרסה הישנה - rounding וcaching
@@ -264,7 +238,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     onStackComplete,
     calculateProgress,
     parsePercentage,
-    browserConfig,
   ]);
 
   // handleScroll עם scroll chaining מהגרסה הישנה
@@ -382,12 +355,12 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       <div
         className={`relative w-full overflow-y-auto overflow-x-hidden ${className}`.trim()}
         ref={scrollerRef}
-        style={{ 
-          height: browserConfig.containerHeight,
-          overscrollBehavior: 'contain',
+        style={{
+          height: 'clamp(500px, 70vh, 800px)', // Adaptive height: min 500px, max 800px
+          overscrollBehavior: 'auto',
+          scrollBehavior: 'smooth',
           WebkitOverflowScrolling: 'touch',
-          scrollBehavior: browserConfig.scrollBehavior,
-          transform: browserConfig.useHardwareAcceleration ? 'translateZ(0)' : 'none',
+          transform: 'translateZ(0)',
           willChange: 'scroll-position',
           ...style
         }}

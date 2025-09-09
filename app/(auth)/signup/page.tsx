@@ -21,7 +21,7 @@ export default function SignupPage() {
     try {
       await signup(email, password);
       router.push("/app"); // Redirect to dashboard after successful signup
-    } catch (err) {
+    } catch {
       setError("Registration failed. Please try again.");
     } finally {
       setIsSubmitting(false);

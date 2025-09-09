@@ -4,6 +4,7 @@ import LogoCloud from "./components/LogoCloud";
 import CampaignBox from "./components/CampaignBox";
 import MagicBento from "./components/MagicBento";
 import AboutSection from "./components/AboutSection";
+import AboutScrollStack from "./components/AboutScrollStack";
 
 export default function Home() {
   return (
@@ -44,14 +45,14 @@ export default function Home() {
 
         {/* Hero Content */}
         <div className="relative z-10 w-full px-4 sm:px-6 max-w-7xl mx-auto">
-          <div className="flex flex-col items-center justify-center min-h-screen py-20 text-center">
+        <div className="flex flex-col items-center min-h-screen pt-20 md:pt-24 lg:pt-2 text-center">
             
             {/* Logo - Properly sized */}
-            <div className="mb-6 animate-fade-in">
+            <div className="-mb-24 animate-fade-in">
               <Image
                 src="/brand/Mononio_Logo.png"
                 alt="Mononio AI"
-                className="h-auto w-[180px] sm:w-[200px] md:w-[220px] lg:w-[250px] object-contain"
+                className="h-auto w-[180px] sm:w-[200px] md:w-[220px] lg:w-[350px] object-contain"
                 width={250}
                 height={80}
                 priority
@@ -59,21 +60,20 @@ export default function Home() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white animate-slide-up leading-tight">
-              Marketing as an Autonomous Force.
+            <h1 className="mb-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white animate-slide-up leading-tight">
+            Turn Your Small Business Into a Marketing Powerhouse 
               <span className="block bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mt-2">
-                Your Private Digital Agency. Always Optimizing.
+              AI That Works 24/7
               </span>
             </h1>
             
-            <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-white opacity-80 animate-fade-in-up">
-              Unlock Unprecedented Efficiency. Get Started Now.
+            <p className="mt-2 text-sm sm:text-base md:text-lg lg:text-xl text-white opacity-80 animate-fade-in-up">
+            Get Professional Agency Results at 90% Less Cost
             </p>
 
             {/* Subheadline */}
             <p className="mb-8 max-w-2xl text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 animate-slide-up animation-delay-200 px-4">
-              Automate your campaigns across all major platforms with intelligent AI agents. 
-              Save time, increase ROI, and scale effortlessly.
+            Complete Campaign Creation, Management & Optimization on Autopilot
             </p>
 
             {/* Trust Indicators */}
@@ -99,7 +99,7 @@ export default function Home() {
             </div>
 
             {/* Campaign Form with glow */}
-            <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl animate-scale-in animation-delay-600">
+            <div className="w-full max-w-lg sm:max-w-xl md:max-w-20xl animate-scale-in animation-delay-600">
               <div className="relative group">
                 {/* Glow effect */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur-lg opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200 animate-pulse" />
@@ -167,37 +167,39 @@ export default function Home() {
       {/* About Section */}
       <AboutSection />
 
+      {/* About Scroll Stack */}
+      <AboutScrollStack />
+
       {/* Platform Section */}
       <section
         id="platform"
         className="bg-black text-white py-16 sm:py-24 px-4 sm:px-6 text-center relative z-10"
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">The Mononio Platform</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to See What $15K/Month Agencies Don&apos;t Want You to Know</h2>
           <p className="max-w-3xl mx-auto text-lg text-gray-300 mb-12">
-            Discover our features, pricing, and integrations that help you run
-            campaigns smarter and faster.
+          Everything you need to replace expensive agencies and run campaigns that actually make money
           </p>
 
           <MagicBento
             cards={[
               {
                 label: "Capabilities",
-                title: "Features",
+                title: "See Live Demo",
                 description:
-                  "Powerful AI-driven tools to automate your campaigns and maximize ROI.",
+                  "Watch real campaigns being created in real-time. See exactly how it works before you commit to anything",
               },
               {
                 label: "Plans",
-                title: "Pricing",
+                title: "Agency vs MONONIO",
                 description:
-                  "Flexible plans for startups, SMBs, and enterprises. Scale at your pace.",
+                  "Compare: $5K-15K/month for agencies vs $297/month for better results. Save 90% and own your campaigns",
               },
               {
                 label: "Connectivity",
-                title: "Integrations",
+                title: "Works With Everything",
                 description:
-                  "Works seamlessly with platforms like Taboola, Outbrain, and more.",
+                  "Connects to all major platforms: Facebook, Google, TikTok, LinkedIn, Instagram, YouTube, WhatsApp, and 20+ more",
               },
             ]}
           />
@@ -210,13 +212,12 @@ export default function Home() {
         className="bg-gray-900 text-white py-16 sm:py-24 px-4 sm:px-6 text-center relative z-10"
       >
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">Get in Touch</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6">Start Your Free Trial Today</h2>
           <p className="max-w-2xl mx-auto text-lg text-gray-300 mb-8">
-            Ready to transform your marketing? Let's discuss how Mononio AI can help
-            your business grow.
+          Join hundreds of smart business owners who stopped overpaying agencies
           </p>
           <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl text-lg font-semibold shadow-lg transition-all duration-200 transform hover:scale-105">
-            Contact Us
+          Get Started - No Credit Card Required
           </button>
         </div>
       </section>

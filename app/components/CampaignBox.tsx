@@ -90,8 +90,7 @@ const CampaignBox = () => {
       setText(finalTranscript + interimTranscript);
     };
 
-    recog.onerror = (event: SpeechRecognitionErrorEvent) => {
-      console.error("Speech recognition error:", event.error);
+    recog.onerror = () => {
     };
 
     recog.onend = () => {
