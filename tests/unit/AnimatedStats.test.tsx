@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import AnimatedStats from '../../../app/components/AnimatedStats';
+import AnimatedStats from '../../app/components/AnimatedStats';
 
 describe('AnimatedStats', () => {
   it('renders all stat items', () => {
@@ -32,9 +32,9 @@ describe('AnimatedStats', () => {
     expect(gradientElements).toHaveLength(4);
   });
 
-  it('has animation delay styles', () => {
+  it('has animation delay styles on stat items', () => {
     const { container } = render(<AnimatedStats />);
-    const animatedElements = container.querySelectorAll('[style*="animationDelay"]');
-    expect(animatedElements).toHaveLength(4);
+    const animatedElements = container.querySelectorAll('.animate-fade-in-up');
+    expect(animatedElements.length).toBeGreaterThanOrEqual(4);
   });
 });

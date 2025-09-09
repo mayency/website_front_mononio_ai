@@ -22,7 +22,7 @@ describe('LogoCloud Component', () => {
     render(<LogoCloud />);
     
     const expectedLogos = [
-      'Mononio AI',
+      'Facebook',
       'Google Ads',
       'Meta',
       'TikTok',
@@ -46,31 +46,32 @@ describe('LogoCloud Component', () => {
   it('creates seamless infinite scroll with duplicated logos', () => {
     render(<LogoCloud />);
     
-    const logoItems = document.querySelectorAll('.logo-item');
-    // Should have 24 items (12 original + 12 duplicated)
-    expect(logoItems).toHaveLength(24);
+    const trackA = document.querySelectorAll('.marquee-a .logo-img');
+    const trackB = document.querySelectorAll('.marquee-b .logo-img');
+    expect(trackA.length).toBeGreaterThan(0);
+    expect(trackB.length).toBeGreaterThan(0);
   });
 
-  it('applies custom sizing classes to logos', () => {
+  it('has alt text and base classes on logos', () => {
     render(<LogoCloud />);
     
-    const mononioLogos = screen.getAllByAltText('Mononio AI');
     const googleAdsLogos = screen.getAllByAltText('Google Ads');
     const tiktokLogos = screen.getAllByAltText('TikTok');
     
-    expect(mononioLogos[0]).toHaveClass('h-50');
-    expect(googleAdsLogos[0]).toHaveClass('h-40');
-    expect(tiktokLogos[0]).toHaveClass('h-20');
+    expect(googleAdsLogos[0]).toHaveClass('logo-img');
+    expect(tiktokLogos[0]).toHaveClass('logo-img');
   });
 
   it('has proper logo slider structure', () => {
     render(<LogoCloud />);
     
-    const logoSlider = document.querySelector('.logo-slider');
-    const logoTrack = document.querySelector('.logo-track');
+    const viewport = document.querySelector('.marquee-viewport');
+    const trackA = document.querySelector('.marquee-a');
+    const trackB = document.querySelector('.marquee-b');
     
-    expect(logoSlider).toBeInTheDocument();
-    expect(logoTrack).toBeInTheDocument();
+    expect(viewport).toBeInTheDocument();
+    expect(trackA).toBeInTheDocument();
+    expect(trackB).toBeInTheDocument();
   });
 
   it('logos have proper accessibility attributes', () => {

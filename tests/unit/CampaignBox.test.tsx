@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import CampaignBox from '@/app/components/CampaignBox';
 
 // Mock the Speech Recognition API
@@ -61,7 +61,7 @@ describe('CampaignBox', () => {
 
   it('shows microphone button', () => {
     render(<CampaignBox />);
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /start recording|stop recording/i })).toBeInTheDocument();
   });
 
   it('shows language selector', () => {

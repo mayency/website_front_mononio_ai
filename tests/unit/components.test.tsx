@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import { MetallicPaint } from '../../app/components/MetallicPaint';
 import InteractiveButtons from '../../app/components/InteractiveButtons';
 import Navbar from '../../app/components/Navbar';
+import { AuthProvider } from '../../app/hooks/useAuth';
 import HeroBackground from '../../app/components/HeroBackground';
 
 describe('Component Tests', () => {
@@ -66,22 +67,22 @@ describe('Component Tests', () => {
   });
 
   test('Navbar renders with logo', () => {
-    render(<Navbar />);
+    render(<AuthProvider><Navbar /></AuthProvider>);
     
     const logo = document.querySelector('img[alt="Mononio AI"]');
     expect(logo).toBeInTheDocument();
   });
 
   test('Navbar has proper structure', () => {
-    render(<Navbar />);
+    render(<AuthProvider><Navbar /></AuthProvider>);
     
     const navbar = document.querySelector('nav');
     expect(navbar).toBeInTheDocument();
-    expect(navbar).toHaveClass('bg-gray-900', 'border-b', 'border-gray-800');
+    expect(navbar).toHaveClass('card-nav');
   });
 
   test('Navbar contains navigation links', () => {
-    render(<Navbar />);
+    render(<AuthProvider><Navbar /></AuthProvider>);
     
     const links = screen.getAllByRole('link');
     expect(links.length).toBeGreaterThan(0);
