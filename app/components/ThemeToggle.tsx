@@ -7,25 +7,29 @@ export default function ThemeToggle() {
 
   // Loads a saved or default state
   useEffect(() => {
-    if (localStorage.theme === "dark") {
-      document.documentElement.classList.add("dark");
-      setIsDark(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-      setIsDark(false);
+    if (typeof window !== 'undefined') {
+      if (localStorage.theme === "dark") {
+        document.documentElement.classList.add("dark");
+        setIsDark(true);
+      } else {
+        document.documentElement.classList.remove("dark");
+        setIsDark(false);
+      }
     }
   }, []);
 
   // Toggle function
   const toggleTheme = () => {
-    if (isDark) {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "light";
-      setIsDark(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-      setIsDark(true);
+    if (typeof window !== 'undefined') {
+      if (isDark) {
+        document.documentElement.classList.remove("dark");
+        localStorage.theme = "light";
+        setIsDark(false);
+      } else {
+        document.documentElement.classList.add("dark");
+        localStorage.theme = "dark";
+        setIsDark(true);
+      }
     }
   };
 

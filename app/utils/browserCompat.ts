@@ -15,7 +15,7 @@ export interface ScrollStackConfig {
 export const getBrowserConfig = (): ScrollStackConfig => {
   // Safe browser detection with fallbacks
   const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : '';
-  const vendor = typeof navigator !== 'undefined' ? (navigator as any).vendor : '';
+  const vendor = typeof navigator !== 'undefined' ? (navigator as Navigator & { vendor?: string }).vendor || '' : '';
   
   const isChrome = /Chrome/.test(userAgent) && /Google Inc/.test(vendor);
   const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent);
