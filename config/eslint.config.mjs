@@ -20,7 +20,10 @@ const eslintConfig = [
       "node_modules/**/*",
       "dist/**/*",
       "build/**/*",
-      "coverage/**/*"
+      "coverage/**/*",
+      "backup/**/*",
+      "playwright-report/**/*",
+      "test-results/**/*"
     ]
   },
   ...compat.extends("next/core-web-vitals"),

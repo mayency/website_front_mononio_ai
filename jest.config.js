@@ -15,7 +15,10 @@ const customJestConfig = {
   ],
   testPathIgnorePatterns: [
     '<rootDir>/.next/',
-    '<rootDir>/node_modules/'
+    '<rootDir>/node_modules/',
+    '<rootDir>/backup/',
+    '<rootDir>/playwright-report/',
+    '<rootDir>/test-results/'
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',

@@ -136,6 +136,7 @@ const CampaignBox = () => {
         )}
 
         <button
+          aria-label={listening ? 'Stop recording' : 'Start recording'}
           onClick={listening ? handleStop : handleStart}
           className="absolute bottom-3 right-3 text-gray-400 hover:text-white"
         >
