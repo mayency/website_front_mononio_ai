@@ -1,20 +1,20 @@
 "use client";
 import React from "react";
-import * as Sentry from "@sentry/nextjs";
 import { useEffect } from "react";
 
-export default function ErrorBoundary({ 
-  error, 
+export default function ErrorBoundary({
+  error,
   reset,
-}: { 
-  error: Error & { digest?: string }; 
+}: {
+  error: Error & { digest?: string };
   reset: () => void;
-}) { 
-  useEffect(() => { 
-    Sentry.captureException(error); 
-  }, [error]); 
+}) {
+  useEffect(() => {
+    // Log error to console for debugging
+    console.error("Error caught by ErrorBoundary:", error);
+  }, [error]);
 
-  return ( 
+  return (
     <div className="min-h-screen bg-black flex items-center justify-center px-4">
       <div className="text-center text-white">
         <div className="mb-8">
@@ -24,15 +24,15 @@ export default function ErrorBoundary({
             We've encountered an unexpected error. Our team has been notified and is working to fix it.
           </p>
         </div>
-        
+
         <div className="space-y-4">
-          <button 
+          <button
             onClick={reset}
             className="px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl font-semibold transition-all duration-200 transform hover:scale-105"
           >
             Try again
           </button>
-          
+
           <div className="text-sm text-gray-500">
             <p>Error ID: {error.digest || 'Unknown'}</p>
             <p className="mt-2">
@@ -43,4 +43,4 @@ export default function ErrorBoundary({
       </div>
     </div>
   );
-} 
+}
