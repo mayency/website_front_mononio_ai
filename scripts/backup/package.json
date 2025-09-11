@@ -1,0 +1,41 @@
+{
+  "name": "mononio-ai-backup-system",
+  "version": "1.0.0",
+  "description": "Enterprise-grade backup system for MONONIO AI",
+  "main": "config.js",
+  "scripts": {
+    "backup:daily": "node ../backup-daily.js",
+    "backup:cloud-sync": "node ../backup-cloud-sync.js",
+    "backup:restore": "node ../restore-backup.js",
+    "backup:verify": "node ../verify-backups.js",
+    "backup:verify:quick": "node ../verify-backups.js quick",
+    "backup:test": "node test-backup.js"
+  },
+  "dependencies": {
+    "googleapis": "^128.0.0",
+    "aws-sdk": "^2.1490.0",
+    "nodemailer": "^6.9.7",
+    "archiver": "^6.0.1",
+    "chokidar": "^3.5.3",
+    "tar": "^6.2.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  },
+  "keywords": [
+    "backup",
+    "enterprise",
+    "mononio",
+    "ai",
+    "cloud",
+    "google-drive",
+    "aws-s3"
+  ],
+  "author": "MONONIO AI Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

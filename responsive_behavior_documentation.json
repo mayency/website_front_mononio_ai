@@ -1,0 +1,175 @@
+{
+  "breakpoints": {
+    "320px": {
+      "navigation": {
+        "type": "Hamburger menu (not implemented)",
+        "logo": "Smaller size (w-32)",
+        "menuItems": "Hidden in dropdown"
+      },
+      "hero": {
+        "headline": "text-2xl (reduced from text-5xl)",
+        "subheadline": "text-sm (reduced from text-lg)",
+        "logo": "w-32 (reduced from w-48)",
+        "video": "Hidden (hidden lg:block)"
+      },
+      "sections": {
+        "stats": "2 columns (grid-cols-2)",
+        "spacing": "py-8 (reduced from py-16)",
+        "padding": "px-4 (reduced from px-6)"
+      },
+      "elements": {
+        "buttons": "Full width on mobile",
+        "forms": "Full width with reduced padding",
+        "text": "Smaller font sizes throughout"
+      }
+    },
+    "768px": {
+      "navigation": {
+        "type": "Card-based dropdown menus",
+        "logo": "Medium size (w-40)",
+        "menuItems": "Visible in dropdown cards"
+      },
+      "hero": {
+        "headline": "text-4xl (increased from text-2xl)",
+        "subheadline": "text-lg (increased from text-sm)",
+        "logo": "w-48 (increased from w-32)",
+        "video": "Still hidden"
+      },
+      "sections": {
+        "stats": "4 columns (grid-cols-4)",
+        "spacing": "py-16 (increased from py-8)",
+        "padding": "px-6 (increased from px-4)"
+      },
+      "elements": {
+        "buttons": "Auto width with padding",
+        "forms": "Max width with proper spacing",
+        "text": "Medium font sizes"
+      }
+    },
+    "1024px": {
+      "navigation": {
+        "type": "Full card-based navigation",
+        "logo": "Large size (w-52)",
+        "menuItems": "All visible in cards"
+      },
+      "hero": {
+        "headline": "text-5xl (increased from text-4xl)",
+        "subheadline": "text-xl (increased from text-lg)",
+        "logo": "w-60 (increased from w-48)",
+        "video": "Visible (block)"
+      },
+      "sections": {
+        "stats": "4 columns maintained",
+        "spacing": "py-20 (increased from py-16)",
+        "padding": "px-6 maintained"
+      },
+      "elements": {
+        "buttons": "Full size with hover effects",
+        "forms": "Optimal sizing",
+        "text": "Large font sizes"
+      }
+    },
+    "1440px": {
+      "navigation": {
+        "type": "Full navigation with optimal spacing",
+        "logo": "Extra large (w-72)",
+        "menuItems": "All visible with proper spacing"
+      },
+      "hero": {
+        "headline": "text-6xl (increased from text-5xl)",
+        "subheadline": "text-2xl (increased from text-xl)",
+        "logo": "w-80 (increased from w-60)",
+        "video": "Full quality visible"
+      },
+      "sections": {
+        "stats": "4 columns with extra spacing",
+        "spacing": "py-24 (increased from py-20)",
+        "padding": "px-6 with max-width container"
+      },
+      "elements": {
+        "buttons": "Large with enhanced hover effects",
+        "forms": "Maximum comfortable width",
+        "text": "Extra large font sizes"
+      }
+    },
+    "1920px": {
+      "navigation": {
+        "type": "Full navigation with maximum spacing",
+        "logo": "Maximum size (w-96)",
+        "menuItems": "All visible with maximum spacing"
+      },
+      "hero": {
+        "headline": "text-7xl (maximum size)",
+        "subheadline": "text-3xl (maximum size)",
+        "logo": "w-96 (maximum size)",
+        "video": "Full quality with enhanced effects"
+      },
+      "sections": {
+        "stats": "4 columns with maximum spacing",
+        "spacing": "py-32 (maximum spacing)",
+        "padding": "px-8 with max-width container"
+      },
+      "elements": {
+        "buttons": "Maximum size with all effects",
+        "forms": "Maximum width with optimal spacing",
+        "text": "Maximum font sizes"
+      }
+    }
+  },
+  "responsiveFeatures": {
+    "videoBackground": {
+      "mobile": "Hidden (hidden lg:block)",
+      "tablet": "Hidden (hidden lg:block)",
+      "desktop": "Visible with opacity-30"
+    },
+    "logoCloud": {
+      "mobile": "Single row, smaller logos",
+      "tablet": "Single row, medium logos",
+      "desktop": "Continuous scroll, full size logos"
+    },
+    "campaignBox": {
+      "mobile": "Full width, reduced padding",
+      "tablet": "Max width with proper spacing",
+      "desktop": "Optimal width with full features"
+    },
+    "navigation": {
+      "mobile": "Hamburger menu (planned)",
+      "tablet": "Card-based dropdowns",
+      "desktop": "Full card-based navigation"
+    }
+  },
+  "fontScaling": {
+    "headings": {
+      "h1": "text-2xl → text-4xl → text-5xl → text-6xl → text-7xl",
+      "h2": "text-xl → text-2xl → text-3xl → text-4xl → text-5xl",
+      "h3": "text-lg → text-xl → text-2xl → text-3xl → text-4xl"
+    },
+    "body": {
+      "large": "text-sm → text-base → text-lg → text-xl → text-2xl",
+      "medium": "text-xs → text-sm → text-base → text-lg → text-xl",
+      "small": "text-xs → text-sm → text-sm → text-base → text-lg"
+    }
+  },
+  "spacingScaling": {
+    "sections": "py-8 → py-16 → py-20 → py-24 → py-32",
+    "containers": "px-4 → px-6 → px-6 → px-6 → px-8",
+    "elements": "p-4 → p-6 → p-8 → p-10 → p-12"
+  },
+  "imageBehavior": {
+    "logo": {
+      "mobile": "w-32, object-contain",
+      "tablet": "w-48, object-contain", 
+      "desktop": "w-60 to w-96, object-contain"
+    },
+    "backgroundVideo": {
+      "mobile": "Hidden",
+      "tablet": "Hidden",
+      "desktop": "object-cover, opacity-30"
+    },
+    "platformLogos": {
+      "mobile": "w-16 h-16",
+      "tablet": "w-20 h-20",
+      "desktop": "w-24 h-24"
+    }
+  }
+}

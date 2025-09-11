@@ -49,7 +49,7 @@ interface ScrollStackProps {
   rotationAmount?: number;
   blurAmount?: number;
   onStackComplete?: () => void;
-  enableScrollChaining?: boolean; // אופציה להפעיל scroll chaining
+  enableScrollChaining?: boolean;
 }
 
 interface Transform {
@@ -91,7 +91,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   stackPosition = "20%",
   scaleEndPosition = "10%",
   baseScale = 0.85,
-  // scaleDuration = 0.5, // unused
   rotationAmount = 0,
   blurAmount = 0,
   onStackComplete,
@@ -103,6 +102,8 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const cardsRef = useRef<HTMLElement[]>([]);
   const lastTransformsRef = useRef<Map<number, Transform>>(new Map());
   const isUpdatingRef = useRef<boolean>(false);
+  const lastScrollTimeRef = useRef<number>(0);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Default configuration for SSR - prevents hydration mismatch
   const defaultConfig: ScrollStackConfig = {
@@ -134,9 +135,17 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     return parseFloat(value.toString());
   }, []);
 
+  // Optimized updateCardTransforms with faster throttling
   const updateCardTransforms = useCallback((): void => {
     const scroller = scrollerRef.current;
     if (!scroller || !cardsRef.current.length || isUpdatingRef.current) return;
+
+    const now = performance.now();
+    // Faster throttling for better responsiveness - changed from 16ms to 4ms
+    if (now - lastScrollTimeRef.current < 4) {
+      return;
+    }
+    lastScrollTimeRef.current = now;
 
     isUpdatingRef.current = true;
 
@@ -145,26 +154,26 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const stackPositionPx = parsePercentage(stackPosition, containerHeight);
     const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight);
     
-    // משוואה מהגרסה הישנה - חישוב נקודת סיום
+    // Calculate end element position once
     const lastCard = cardsRef.current[cardsRef.current.length - 1];
     const endElementTop = lastCard ? 
       lastCard.offsetTop + lastCard.offsetHeight + (containerHeight * 0.3) : 
       scroller.scrollHeight;
+
+    // Batch DOM updates
+    const updates: Array<{ card: HTMLElement; transform: string; filter: string; zIndex: string }> = [];
 
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
 
       const cardTop = card.offsetTop;
       
-      // משוואות מהגרסה הישנה - trigger start עם itemStackDistance * i
       const triggerStart = cardTop - stackPositionPx - (itemStackDistance * i);
       const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = cardTop - stackPositionPx - (itemStackDistance * i);
       
-      // Use browser-specific configuration for the last card
       let pinEnd: number;
       if (i === cardsRef.current.length - 1) {
-        // Use browser-specific configuration for the last card
         pinEnd = endElementTop - (containerHeight * browserConfig.pinEndMultiplier);
       } else {
         pinEnd = endElementTop - containerHeight / 2;
@@ -175,7 +184,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       const scale = 1 - scaleProgress * (1 - targetScale);
       const rotation = rotationAmount ? i * rotationAmount * scaleProgress : 0;
 
-      // לוגיקת blur מהגרסה הישנה - iteration קדימה
+      // Optimized blur calculation
       let blur = 0;
       if (blurAmount) {
         let topCardIndex = 0;
@@ -196,7 +205,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         }
       }
 
-      let translateY = -120; // הרמה של 80 פיקסלים למעלה
+      let translateY = -120;
       const isPinned = scrollTop >= pinStart && scrollTop <= pinEnd;
       if (isPinned) {
         translateY = scrollTop - cardTop + stackPositionPx + (itemStackDistance * i) - 80;
@@ -212,35 +221,36 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         }
       }
 
-      // אופטימיזציה מהגרסה הישנה - rounding וcaching
+      // Optimized transform calculation with reduced precision
       const newTransform = {
-        translateY: Math.round(translateY * 100) / 100,
-        scale: Math.round(scale * 1000) / 1000,
-        rotation: Math.round(rotation * 100) / 100,
-        blur: Math.round(blur * 100) / 100
+        translateY: Math.round(translateY * 10) / 10,
+        scale: Math.round(scale * 100) / 100,
+        rotation: Math.round(rotation * 10) / 10,
+        blur: Math.round(blur * 10) / 10
       };
 
       const lastTransform = lastTransformsRef.current.get(i);
       const hasChanged = !lastTransform || 
-        Math.abs(lastTransform.translateY - newTransform.translateY) > 0.1 ||
-        Math.abs(lastTransform.scale - newTransform.scale) > 0.001 ||
-        Math.abs(lastTransform.rotation - newTransform.rotation) > 0.1 ||
-        Math.abs(lastTransform.blur - newTransform.blur) > 0.1;
+        Math.abs(lastTransform.translateY - newTransform.translateY) > 0.5 ||
+        Math.abs(lastTransform.scale - newTransform.scale) > 0.01 ||
+        Math.abs(lastTransform.rotation - newTransform.rotation) > 0.5 ||
+        Math.abs(lastTransform.blur - newTransform.blur) > 0.5;
 
       if (hasChanged) {
         const transform = `translate3d(0, ${newTransform.translateY}px, 0) scale(${newTransform.scale}) rotate(${newTransform.rotation}deg)`;
         const filter = newTransform.blur > 0 ? `blur(${newTransform.blur}px)` : '';
 
-        card.style.transform = transform;
-        card.style.filter = filter;
-        
-        // z-index מהגרסה החדשה
-        card.style.zIndex = i.toString();
+        updates.push({
+          card,
+          transform,
+          filter,
+          zIndex: i.toString()
+        });
         
         lastTransformsRef.current.set(i, newTransform);
       }
 
-      // לוגיקת stack completion מהגרסה הישנה
+      // Stack completion logic
       if (i === cardsRef.current.length - 1) {
         const isInView = scrollTop >= pinStart && scrollTop <= pinEnd;
         if (isInView && !stackCompletedRef.current) {
@@ -250,6 +260,13 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
           stackCompletedRef.current = false;
         }
       }
+    });
+
+    // Apply all DOM updates in a single batch
+    updates.forEach(({ card, transform, filter, zIndex }) => {
+      card.style.transform = transform;
+      card.style.filter = filter;
+      card.style.zIndex = zIndex;
     });
 
     isUpdatingRef.current = false;
@@ -267,34 +284,43 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     browserConfig,
   ]);
 
-  // handleScroll עם scroll chaining מהגרסה הישנה
+  // Optimized scroll handler with faster debouncing
   const handleScroll = useCallback((e: Event): void => {
-    if (enableScrollChaining) {
-      const scroller = e.target as HTMLDivElement;
-      const { scrollTop, scrollHeight, clientHeight } = scroller;
-      
-      // בדיקה רגישה יותר לסוף הScroll
-      const isNearBottom = scrollTop + clientHeight >= scrollHeight - 50;
-      
-      // כשמגיעים קרוב לסוף, מאפשרים scroll chaining
-      if (isNearBottom) {
-        // החזר גלילה לwindow אם הוא נעצר
-        const checkWindowScroll = () => {
-          window.scrollBy(0, 1);
-        };
-        
-        // עדכון קטן לwindow scroll אחרי זמן קצר
-        setTimeout(checkWindowScroll, 50);
-      }
+    // Clear existing timeout
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
     }
 
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
-    animationFrameRef.current = requestAnimationFrame(updateCardTransforms);
+    // Faster debounce for better responsiveness
+    scrollTimeoutRef.current = setTimeout(() => {
+      if (enableScrollChaining) {
+        const scroller = e.target as HTMLDivElement;
+        const { scrollTop, scrollHeight, clientHeight } = scroller;
+        
+        // More aggressive bottom detection for faster transition
+        const isNearBottom = scrollTop + clientHeight >= scrollHeight - 50;
+        
+        if (isNearBottom) {
+          // Faster window scroll continuation - increased from 2 to 8
+          const checkWindowScroll = () => {
+            if (window.scrollY < document.documentElement.scrollHeight - window.innerHeight) {
+              window.scrollBy(0, 8); // Increased from 2 to 8 for faster transition
+            }
+          };
+          
+          // Use requestAnimationFrame for smoother continuation
+          requestAnimationFrame(checkWindowScroll);
+        }
+      }
+
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      animationFrameRef.current = requestAnimationFrame(updateCardTransforms);
+    }, 2);
   }, [updateCardTransforms, enableScrollChaining]);
 
-  // handleWheel מהגרסה הישנה
+  // Improved wheel handler for faster transition after 4th card
   const handleWheel = useCallback((e: WheelEvent): void => {
     if (!enableScrollChaining) return;
     
@@ -302,11 +328,16 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     if (!scroller) return;
 
     const { scrollTop, scrollHeight, clientHeight } = scroller;
-    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10;
+    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 30; // More sensitive detection
     
-    // אם גוללים למטה ואנחנו בסוף, תן לevent לעבור לwindow
+    // Faster transition after 4th card - increased sensitivity and speed
     if (e.deltaY > 0 && isAtBottom) {
-      window.scrollBy(0, e.deltaY * 0.5);
+      e.preventDefault();
+      // Increased scroll speed from 0.3 to 0.8 for faster transition
+      window.scrollBy(0, e.deltaY * 0.8);
+    } else if (e.deltaY < 0 && scrollTop <= 10) {
+      e.preventDefault();
+      window.scrollBy(0, e.deltaY * 0.8);
     }
   }, [enableScrollChaining]);
 
@@ -317,7 +348,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const cards = Array.from(scroller.querySelectorAll(".scroll-stack-card")) as HTMLElement[];
     cardsRef.current = cards;
 
-    // סגנונות מהגרסה הישנה והחדשה משולבים
+    // Optimized card setup
     cards.forEach((card, i) => {
       card.style.position = 'relative';
       card.style.willChange = 'transform, filter';
@@ -334,12 +365,13 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       
       // Raise the first card up
       if (i === 0) {
-        card.style.marginTop = '-50px'; // or any value that fits
+        card.style.marginTop = '-50px';
       }
     });
 
+    // Use passive listeners for better performance
     const scrollListener = (e: Event) => handleScroll(e);
-    scroller.addEventListener('scroll', scrollListener, { passive: !enableScrollChaining });
+    scroller.addEventListener('scroll', scrollListener, { passive: true });
     
     if (enableScrollChaining) {
       scroller.addEventListener('wheel', handleWheel as EventListener, { passive: false });
@@ -348,9 +380,13 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     // Initial update
     updateCardTransforms();
 
-    // Handle resize מהגרסה החדשה
+    // Optimized resize observer
     const resizeObserver = new ResizeObserver(() => {
-      updateCardTransforms();
+      // Debounce resize updates
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      animationFrameRef.current = requestAnimationFrame(updateCardTransforms);
     });
     resizeObserver.observe(scroller);
 
@@ -362,6 +398,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       resizeObserver.disconnect();
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
+      }
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
       }
       stackCompletedRef.current = false;
       cardsRef.current = [];

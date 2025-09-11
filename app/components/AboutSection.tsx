@@ -73,14 +73,14 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Autonomy & Integrity */}
+        {/* Autonomy & Integrity. <a href="/case-studies" className="text-purple-400 hover:text-purple-300 underline">Read success stories</a> */}
         <div className="max-w-66xl mx-auto">
           <div className="text-center mb-12">
             <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             What Makes MONONIO Different From Other Tools
             </h3>
             <p className="text-lg text-gray-300 max-w-4xl mx-auto">
-            Autonomy & Integrity
+            Autonomy & Integrity. <a href="/case-studies" className="text-purple-400 hover:text-purple-300 underline">Read success stories</a>
             </p>
           </div>
           

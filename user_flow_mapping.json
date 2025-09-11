@@ -1,0 +1,185 @@
+{
+  "userFlows": [
+    {
+      "flowName": "Visitor to Demo Request",
+      "steps": [
+        {
+          "step": 1,
+          "page": "Homepage",
+          "action": "Lands on page",
+          "element": "Hero section with video background",
+          "timeOnPage": "5-10 seconds"
+        },
+        {
+          "step": 2,
+          "action": "Scrolls down",
+          "element": "Stats section",
+          "timeOnPage": "3-5 seconds"
+        },
+        {
+          "step": 3,
+          "action": "Clicks",
+          "element": "CampaignBox CTA button 'Start My Success Story'",
+          "destination": "Campaign creation form",
+          "timeOnPage": "10-15 seconds"
+        },
+        {
+          "step": 4,
+          "action": "Fills form",
+          "element": "Text area with voice input",
+          "destination": "Form submission",
+          "timeOnPage": "30-60 seconds"
+        }
+      ],
+      "totalClicks": 1,
+      "estimatedTime": "45-90 seconds",
+      "conversionRate": "High - single CTA focus"
+    },
+    {
+      "flowName": "Visitor to Pricing",
+      "steps": [
+        {
+          "step": 1,
+          "page": "Homepage",
+          "action": "Lands on page",
+          "element": "Hero section"
+        },
+        {
+          "step": 2,
+          "action": "Clicks navigation",
+          "element": "Platform menu",
+          "destination": "Dropdown menu"
+        },
+        {
+          "step": 3,
+          "action": "Clicks",
+          "element": "Pricing link",
+          "destination": "/pricing"
+        }
+      ],
+      "totalClicks": 2,
+      "estimatedTime": "15-30 seconds"
+    },
+    {
+      "flowName": "Visitor to About Page",
+      "steps": [
+        {
+          "step": 1,
+          "page": "Homepage",
+          "action": "Lands on page",
+          "element": "Hero section"
+        },
+        {
+          "step": 2,
+          "action": "Clicks navigation",
+          "element": "About menu",
+          "destination": "Dropdown menu"
+        },
+        {
+          "step": 3,
+          "action": "Clicks",
+          "element": "Our Story link",
+          "destination": "/about"
+        }
+      ],
+      "totalClicks": 2,
+      "estimatedTime": "15-30 seconds"
+    },
+    {
+      "flowName": "Visitor to Case Studies",
+      "steps": [
+        {
+          "step": 1,
+          "page": "Homepage",
+          "action": "Lands on page",
+          "element": "Hero section"
+        },
+        {
+          "step": 2,
+          "action": "Clicks navigation",
+          "element": "About menu",
+          "destination": "Dropdown menu"
+        },
+        {
+          "step": 3,
+          "action": "Clicks",
+          "element": "Customer Stories link",
+          "destination": "/case-studies"
+        }
+      ],
+      "totalClicks": 2,
+      "estimatedTime": "15-30 seconds"
+    },
+    {
+      "flowName": "Visitor to FAQ",
+      "steps": [
+        {
+          "step": 1,
+          "page": "Homepage",
+          "action": "Lands on page",
+          "element": "Hero section"
+        },
+        {
+          "step": 2,
+          "action": "Clicks",
+          "element": "FAQ link in subheadline",
+          "destination": "/faq"
+        }
+      ],
+      "totalClicks": 1,
+      "estimatedTime": "10-20 seconds"
+    },
+    {
+      "flowName": "Pricing Page to Sign Up",
+      "steps": [
+        {
+          "step": 1,
+          "page": "Pricing",
+          "action": "Lands on page",
+          "element": "Hero section with comparison"
+        },
+        {
+          "step": 2,
+          "action": "Scrolls down",
+          "element": "Pricing plans section"
+        },
+        {
+          "step": 3,
+          "action": "Clicks",
+          "element": "Start Free Trial button",
+          "destination": "Sign up form"
+        }
+      ],
+      "totalClicks": 1,
+      "estimatedTime": "30-60 seconds"
+    }
+  ],
+  "conversionFunnels": {
+    "primary": {
+      "name": "Demo Request Funnel",
+      "entryPoint": "Homepage Hero",
+      "conversionPoint": "CampaignBox Form",
+      "dropOffPoints": ["Stats section", "About section"]
+    },
+    "secondary": {
+      "name": "Pricing Funnel",
+      "entryPoint": "Homepage Navigation",
+      "conversionPoint": "Pricing Page CTA",
+      "dropOffPoints": ["Comparison table", "FAQ section"]
+    }
+  },
+  "userBehaviorInsights": {
+    "averageTimeOnHomepage": "60-120 seconds",
+    "mostClickedElements": [
+      "Start My Success Story button",
+      "Pricing navigation link",
+      "FAQ link in subheadline"
+    ],
+    "scrollDepth": {
+      "25%": "Stats section",
+      "50%": "About section",
+      "75%": "Platform section",
+      "100%": "Logo cloud"
+    }
+  }
+}

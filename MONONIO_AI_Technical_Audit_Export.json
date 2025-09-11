@@ -1,0 +1,991 @@
+{
+  "siteName": "MONONIO AI",
+  "auditDate": "2025-01-27",
+  "auditVersion": "1.0",
+  "pages": [
+    {
+      "pageName": "Homepage",
+      "url": "/",
+      "metadata": {
+        "title": "Replace $15K/Month Agencies with AI Marketing - 90% Less Cost | MONONIO",
+        "description": "Stop paying $5K-15K/month for agencies. Get better results for $297/month with MONONIO's AI marketing platform. Free demo available.",
+        "keywords": "AI marketing alternative to agencies, small business marketing automation, replace marketing agency, $297 vs $15000 agency fees, AI marketing platform"
+      },
+      "sections": [
+        {
+          "sectionName": "Hero",
+          "position": "above-fold",
+          "elements": {
+            "headline": "Turn Your Small Business Into a Marketing Powerhouse with AI That Works 24/7",
+            "subheadline": "Get Professional Agency Results at 90% Less Cost - Complete Campaign Creation, Management & Optimization on Autopilot.",
+            "ctaButtons": [
+              {
+                "text": "Start My Success Story",
+                "action": "CampaignBox component",
+                "style": "primary",
+                "gradient": "from-purple-500 to-blue-500"
+              }
+            ],
+            "images": ["/brand/Mononio_Logo.png"],
+            "videos": ["/videos/Abstract_Neon_Clouds1.mp4"],
+            "backgroundColor": "#000000",
+            "textColor": "#ffffff",
+            "backgroundGradient": "from-purple-900/30 via-black to-blue-900/30",
+            "trustIndicators": [
+              "10x Better ROI",
+              "No Credit Card", 
+              "5-Min Setup"
+            ],
+            "socialProof": {
+              "rating": "4.9/5",
+              "businesses": "500+ small businesses joined this month"
+            }
+          }
+        },
+        {
+          "sectionName": "Stats",
+          "position": "below-fold",
+          "elements": {
+            "stats": [
+              {
+                "value": "10x",
+                "label": "ROI vs Agencies",
+                "color": "purple-400 to-blue-400"
+              },
+              {
+                "value": "500+",
+                "label": "Businesses Saved",
+                "color": "purple-400 to-blue-400"
+              },
+              {
+                "value": "24/7",
+                "label": "AI Optimization",
+                "color": "purple-400 to-blue-400"
+              },
+              {
+                "value": "$8,500",
+                "label": "Monthly Savings",
+                "color": "purple-400 to-blue-400"
+              }
+            ],
+            "backgroundColor": "#111827",
+            "borderColor": "#374151"
+          }
+        },
+        {
+          "sectionName": "About",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Why Smart Business Owners Choose MONONIO Over $5K-15K Agency Fees",
+            "subheadline": "Real Results. Real Savings. Real Freedom From Agency Dependency",
+            "principles": [
+              {
+                "letter": "M",
+                "title": "Mastery",
+                "description": "Master every platform like a pro - even if you've never run ads before",
+                "color": "purple-600/20 to-purple-800/20",
+                "borderColor": "purple-400/30"
+              },
+              {
+                "letter": "O",
+                "title": "Optimization",
+                "description": "Continuous optimization means your campaigns get better while you sleep",
+                "color": "blue-600/20 to-blue-800/20",
+                "borderColor": "blue-400/30"
+              },
+              {
+                "letter": "N",
+                "title": "No-Code Setup",
+                "description": "Set up professional campaigns in minutes, not months - zero technical skills required",
+                "color": "teal-600/20 to-teal-800/20",
+                "borderColor": "teal-400/30"
+              },
+              {
+                "letter": "O",
+                "title": "Orchestration",
+                "description": "Run campaigns on 10+ platforms from one dashboard - Facebook, Google, TikTok, LinkedIn, YouTube, Instagram & more",
+                "color": "green-600/20 to-green-800/20",
+                "borderColor": "green-400/30"
+              }
+            ],
+            "differentiators": [
+              {
+                "title": "Autonomy",
+                "description": "Complete Independence - No More Agency Lock-in or Monthly Retainers",
+                "color": "purple-600/20 to-blue-600/20"
+              },
+              {
+                "title": "Integrity",
+                "description": "Full Transparency - See Exactly Where Every Dollar Goes and Why",
+                "color": "blue-600/20 to-teal-600/20"
+              }
+            ],
+            "ctaButton": {
+              "text": "Get My Free Demo",
+              "style": "primary",
+              "gradient": "from-purple-600 to-blue-600"
+            }
+          }
+        },
+        {
+          "sectionName": "Platform",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Ready to See What $15K/Month Agencies Don't Want You to Know?",
+            "subheadline": "Everything you need to replace expensive agencies and run campaigns that actually make money",
+            "cards": [
+              {
+                "label": "Works With Everything",
+                "title": "Integrations",
+                "description": "Connects to all major platforms: Facebook, Google, TikTok, LinkedIn, Instagram, YouTube, WhatsApp, and 20+ more"
+              },
+              {
+                "label": "Agency vs MONONIO",
+                "title": "Pricing",
+                "description": "Compare: $5K-15K/month for agencies vs $297/month for better results. Save 90% and own your campaigns"
+              },
+              {
+                "label": "See Live Demo",
+                "title": "Features",
+                "description": "Watch real campaigns being created in real-time. See exactly how it works before you commit to anything"
+              }
+            ]
+          }
+        },
+        {
+          "sectionName": "Process",
+          "position": "below-fold",
+          "elements": {
+            "headline": "From Idea to Results in Under 10 Minutes",
+            "subheadline": "See exactly how MONONIO turns any business idea into profitable campaigns",
+            "steps": [
+              {
+                "title": "Step 1: Describe",
+                "description": "Just Talk - We Handle Everything Else. Tell our AI about your business in plain English. No technical setup, no complicated forms - just describe what you sell and who you want to reach",
+                "gradient": "from-purple-600/20 to-blue-600/20"
+              },
+              {
+                "title": "Step 2: Generate",
+                "description": "Watch AI Create Your Complete Campaign. Within minutes, get professional ad copy, targeting options, budget recommendations and creative assets - all customized for your specific business.",
+                "gradient": "from-blue-600/20 to-cyan-600/20"
+              },
+              {
+                "title": "Step 3: Launch",
+                "description": "Go Live on All Platforms Instantly One click deploys your campaign across Facebook, Google, TikTok, LinkedIn and more. No need to learn each platform separately",
+                "gradient": "from-cyan-600/20 to-green-600/20"
+              },
+              {
+                "title": "Step 4: Profit",
+                "description": "Sit Back While AI Maximizes Your ROI Our AI continuously optimizes your campaigns 24/7, automatically increasing budget on winners and pausing losers",
+                "gradient": "from-green-600/20 to-purple-600/20"
+              }
+            ]
+          }
+        },
+        {
+          "sectionName": "Contact",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Stop Funding Your Competitors' Marketing Agencies",
+            "subheadline": "While you pay agencies $15K/month, smart competitors are using MONONIO for $297/month and eating your market share",
+            "ctaButton": {
+              "text": "Stop Losing to Smarter Competitors",
+              "style": "primary",
+              "gradient": "from-purple-600 to-blue-600"
+            }
+          }
+        },
+        {
+          "sectionName": "LogoCloud",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Deploy campaigns across the platforms you already use",
+            "logos": [
+              "Facebook", "Google Ads", "Meta", "TikTok", "LinkedIn", "X", 
+              "Instagram", "YouTube", "WhatsApp", "Telegram", "Taboola", "Outbrain"
+            ],
+            "backgroundColor": "#111827"
+          }
+        }
+      ]
+    },
+    {
+      "pageName": "About",
+      "url": "/about",
+      "metadata": {
+        "title": "About MONONIO AI - The Real Reason Agencies Don't Want You to See This",
+        "description": "We got tired of watching small businesses get ripped off by agencies that charge $10K/month for campaigns any smart AI could build better"
+      },
+      "sections": [
+        {
+          "sectionName": "Hero",
+          "position": "above-fold",
+          "elements": {
+            "headline": "The Real Reason Agencies Don't Want You to See This",
+            "subheadline": "We got tired of watching small businesses get ripped off by agencies that charge $10K/month for campaigns any smart AI could build better",
+            "backgroundColor": "#000000",
+            "textColor": "#ffffff"
+          }
+        },
+        {
+          "sectionName": "Story",
+          "position": "below-fold",
+          "elements": {
+            "headline": "The $60,000 Problem Every Small Business Faces",
+            "quote": "\"You need at least $5,000/month to see results.\"",
+            "content": [
+              "That's what every agency told Sarah when she wanted to market her boutique. $60,000 a year just to get started. For a small business owner already struggling with rent and inventory.",
+              "Meanwhile, the \"marketing experts\" were using the same cookie-cutter templates, charging premium prices for campaigns that took them 20 minutes to set up.",
+              "We realized something: \"The tools that create million-dollar campaigns aren't magic. They're just data, psychology, and optimization - things AI can do better than humans.\""
+            ],
+            "backgroundColor": "#111827",
+            "borderColor": "#6366f1"
+          }
+        },
+        {
+          "sectionName": "Mission",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Our Mission",
+            "quote": "Small businesses deserve the same marketing power as Fortune 500 companies - without paying Fortune 500 prices",
+            "comparison": {
+              "before": [
+                "$5K-15K monthly agency fees",
+                "3-6 month contracts",
+                "Black box reporting",
+                "Cookie-cutter campaigns",
+                "You own nothing"
+              ],
+              "after": [
+                "$297/month flat rate",
+                "Cancel anytime",
+                "Full transparency",
+                "Custom AI campaigns",
+                "You own everything"
+              ]
+            },
+            "backgroundColor": "indigo-900/20 to-purple-900/20"
+          }
+        },
+        {
+          "sectionName": "Differentiators",
+          "position": "below-fold",
+          "elements": {
+            "headline": "What Makes Us Different",
+            "subheadline": "While Other Tools Complicate, We Eliminate",
+            "items": [
+              {
+                "title": "AI That Actually Understands Business",
+                "description": "Not just keyword matching - our AI understands your industry, competition, and what makes customers buy",
+                "icon": "🧠"
+              },
+              {
+                "title": "Professional Results Without Professional Prices",
+                "description": "Get better results than agencies for 90% less cost - no contracts, no minimums, no BS",
+                "icon": "��"
+              },
+              {
+                "title": "You Own Everything",
+                "description": "Your data, your audiences, your campaigns. Never be held hostage by an agency again",
+                "icon": "🔐"
+              },
+              {
+                "title": "Launch in Minutes, Not Months",
+                "description": "From idea to live campaigns across all platforms in under 10 minutes. No learning curve required",
+                "icon": "⚡"
+              }
+            ]
+          }
+        },
+        {
+          "sectionName": "Technology",
+          "position": "below-fold",
+          "elements": {
+            "headline": "The Technology Behind MONONIO",
+            "subheadline": "We've spent 3 years training our AI on millions of successful campaigns, so it knows what works before you even start",
+            "stats": [
+              {
+                "value": "95%",
+                "label": "Get better results than their previous agency",
+                "color": "indigo-400"
+              },
+              {
+                "value": "24 hours",
+                "label": "Average time to see first results",
+                "color": "purple-400"
+              },
+              {
+                "value": "$8,500",
+                "label": "Average monthly savings vs agencies",
+                "color": "green-400"
+              }
+            ],
+            "backgroundColor": "purple-900/20 to-indigo-900/20"
+          }
+        },
+        {
+          "sectionName": "CTA",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Stop Losing to Smarter Competitors",
+            "subheadline": "While you're paying agencies $10K/month for mediocre results, your competition is using MONONIO to dominate your market for $297/month and eating your market share",
+            "ctaButton": {
+              "text": "Stop Funding Your Competition",
+              "style": "primary",
+              "backgroundColor": "#4f46e5"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageName": "Pricing",
+      "url": "/pricing",
+      "metadata": {
+        "title": "MONONIO AI Pricing - Stop Paying $15K/Month to Agencies",
+        "description": "Get better marketing results for 90% less cost. Professional AI marketing automation starting at $297/month. Compare with traditional agencies.",
+        "keywords": "AI marketing pricing, marketing automation cost, agency alternative, marketing ROI, campaign management pricing"
+      },
+      "sections": [
+        {
+          "sectionName": "Urgency Banner",
+          "position": "above-fold",
+          "elements": {
+            "text": "Limited Time Offer: Save additional 20% on annual plans. Expires in 3 days",
+            "backgroundColor": "orange-500 to-red-500",
+            "textColor": "#ffffff"
+          }
+        },
+        {
+          "sectionName": "Hero",
+          "position": "above-fold",
+          "elements": {
+            "headline": "Stop Paying $15K/Month to Agencies",
+            "subheadline": "Get Better Results for 90% Less Cost",
+            "comparison": {
+              "agency": {
+                "cost": "$5,000 - $15,000",
+                "features": [
+                  "2-4 week setup",
+                  "Limited platforms",
+                  "Manual optimization",
+                  "Limited transparency"
+                ],
+                "color": "red"
+              },
+              "mononio": {
+                "cost": "$297 - $997",
+                "features": [
+                  "5 minute setup",
+                  "10+ platforms",
+                  "24/7 AI optimization",
+                  "Full transparency"
+                ],
+                "color": "green"
+              }
+            },
+            "trustStats": [
+              {
+                "value": "500+",
+                "label": "Businesses Switched"
+              },
+              {
+                "value": "$2.3M",
+                "label": "Collectively Saved"
+              },
+              {
+                "value": "340%",
+                "label": "Average ROI Increase"
+              },
+              {
+                "value": "47",
+                "label": "Switched This Week"
+              }
+            ]
+          }
+        },
+        {
+          "sectionName": "Savings Calculator",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Savings Calculator",
+            "subheadline": "What do you currently pay your marketing agency per month?",
+            "sliderRange": {
+              "min": 3000,
+              "max": 20000,
+              "step": 500
+            },
+            "backgroundColor": "white/5"
+          }
+        },
+        {
+          "sectionName": "Pricing Plans",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Choose Your Plan",
+            "subheadline": "All plans include our core AI optimization features. Scale up as you grow.",
+            "plans": [
+              {
+                "name": "Starter",
+                "price": 297,
+                "period": "month",
+                "description": "Perfect for small businesses getting started with AI marketing",
+                "features": [
+                  "Up to 5 active campaigns",
+                  "Facebook + Google Ads integration",
+                  "Basic AI optimization",
+                  "Email support",
+                  "Monthly performance reports",
+                  "Campaign templates library"
+                ],
+                "savings": "Save $4,703/month vs agencies",
+                "cta": "Start Free Trial",
+                "guarantee": "30-Day Guarantee"
+              },
+              {
+                "name": "Professional",
+                "price": 597,
+                "period": "month",
+                "description": "The complete solution for growing businesses",
+                "features": [
+                  "Unlimited campaigns",
+                  "All platforms (Facebook, Google, TikTok, LinkedIn, Instagram, YouTube)",
+                  "24/7 AI optimization",
+                  "Priority support",
+                  "Weekly detailed reports",
+                  "Advanced analytics dashboard",
+                  "A/B testing automation",
+                  "Custom audience targeting"
+                ],
+                "savings": "Save $9,403/month vs agencies",
+                "cta": "Start Free Trial",
+                "popular": true,
+                "guarantee": "30-Day Guarantee"
+              },
+              {
+                "name": "Enterprise",
+                "price": 997,
+                "period": "month",
+                "description": "For large organizations with advanced needs",
+                "features": [
+                  "Everything in Professional",
+                  "White-label options",
+                  "Custom reporting",
+                  "Dedicated account manager",
+                  "API access",
+                  "Custom integrations",
+                  "Advanced security features",
+                  "SLA guarantee"
+                ],
+                "savings": "Save $14,003/month vs agencies",
+                "cta": "Contact Sales",
+                "guarantee": "30-Day Guarantee"
+              }
+            ]
+          }
+        },
+        {
+          "sectionName": "Comparison Table",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Agency vs MONONIO AI",
+            "subheadline": "See why thousands of businesses are switching to AI-powered marketing",
+            "features": [
+              {
+                "feature": "Monthly Cost",
+                "agency": "$5,000 - $15,000",
+                "mononio": "$297 - $997",
+                "advantage": "mononio"
+              },
+              {
+                "feature": "Setup Time",
+                "agency": "2-4 weeks",
+                "mononio": "5 minutes",
+                "advantage": "mononio"
+              },
+              {
+                "feature": "Platforms Supported",
+                "agency": "Limited (2-3)",
+                "mononio": "10+ platforms",
+                "advantage": "mononio"
+              },
+              {
+                "feature": "Optimization",
+                "agency": "Manual (business hours)",
+                "mononio": "24/7 AI automation",
+                "advantage": "mononio"
+              },
+              {
+                "feature": "Transparency",
+                "agency": "Limited reporting",
+                "mononio": "Full visibility & control",
+                "advantage": "mononio"
+              },
+              {
+                "feature": "Scalability",
+                "agency": "Requires more staff",
+                "mononio": "Instant scaling",
+                "advantage": "mononio"
+              }
+            ],
+            "backgroundColor": "white/5"
+          }
+        },
+        {
+          "sectionName": "FAQ",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Frequently Asked Questions",
+            "subheadline": "Everything you need to know about MONONIO AI pricing",
+            "questions": [
+              {
+                "question": "How much can I save compared to hiring a marketing agency?",
+                "answer": "Most businesses save 85-95% compared to traditional agencies. A typical agency charges $5,000-$15,000/month, while MONONIO AI starts at just $297/month with better results."
+              },
+              {
+                "question": "What's included in the free trial?",
+                "answer": "The free trial includes full access to all features for 14 days. You can create campaigns, connect your ad accounts, and see real results with no credit card required."
+              },
+              {
+                "question": "Can I switch plans anytime?",
+                "answer": "Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any differences."
+              },
+              {
+                "question": "Do you offer a money-back guarantee?",
+                "answer": "We offer a 30-day money-back guarantee. If you're not satisfied with the results, we'll refund your payment in full."
+              },
+              {
+                "question": "How does the AI optimization work?",
+                "answer": "Our AI continuously monitors your campaigns, adjusts bids, optimizes targeting, and tests new creative variations 24/7 to maximize your ROI."
+              },
+              {
+                "question": "What platforms do you support?",
+                "answer": "We support Facebook, Instagram, Google Ads, TikTok, LinkedIn, YouTube, Twitter, Pinterest, Snapchat, and more. New platforms are added regularly."
+              }
+            ]
+          }
+        },
+        {
+          "sectionName": "Final CTA",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Ready to Save 90% on Marketing?",
+            "subheadline": "Join thousands of businesses already using MONONIO AI to automate their marketing",
+            "ctaButtons": [
+              {
+                "text": "Start Your Free Trial",
+                "style": "primary",
+                "gradient": "from-indigo-600 to-purple-600"
+              },
+              {
+                "text": "Schedule Demo",
+                "style": "outline",
+                "borderColor": "white/30"
+              }
+            ],
+            "disclaimer": "No credit card required • 14-day free trial • Cancel anytime",
+            "backgroundColor": "indigo-600/20 to-purple-600/20"
+          }
+        }
+      ]
+    },
+    {
+      "pageName": "FAQ",
+      "url": "/faq",
+      "metadata": {
+        "title": "FAQ - Everything You Need to Know | MONONIO AI",
+        "description": "Get honest answers to your most important questions about MONONIO AI. Learn how our platform works, pricing, security, and more.",
+        "keywords": "MONONIO AI FAQ, marketing automation questions, AI marketing platform, small business marketing"
+      },
+      "sections": [
+        {
+          "sectionName": "Hero",
+          "position": "above-fold",
+          "elements": {
+            "headline": "Everything You Need to Know",
+            "subheadline": "Honest answers to your most important questions",
+            "backgroundColor": "#000000",
+            "textColor": "#ffffff",
+            "gradient": "from-indigo-400 to-purple-400"
+          }
+        },
+        {
+          "sectionName": "FAQ Accordion",
+          "position": "below-fold",
+          "elements": {
+            "questions": [
+              {
+                "question": "Does this actually work, or is it just hype?",
+                "answer": "MONONIO uses the same AI technology that powers Google and Facebook's billion-dollar ad systems. Our early users report 2-3x better results than their previous agencies, with average cost-per-lead dropping by 60% in the first month."
+              },
+              {
+                "question": "How much does it cost compared to agencies?",
+                "answer": "Agencies charge $5K-15K per month with 6-12 month contracts. MONONIO costs $297/month with no contracts. You can cancel anytime and keep everything you've built."
+              },
+              {
+                "question": "How long does it take to see results?",
+                "answer": "Most users see their first leads within 24-48 hours of launching. Full optimization typically happens within the first week as our AI learns your audience."
+              },
+              {
+                "question": "What happens if I want to cancel or leave?",
+                "answer": "Unlike agencies, you own everything - your ad accounts, audiences, and data. You can export everything and cancel anytime. No contracts, no hostage situations."
+              },
+              {
+                "question": "Do I need technical skills or marketing experience?",
+                "answer": "None. If you can describe your business in plain English, MONONIO handles the rest. The system is designed for business owners, not marketing experts."
+              },
+              {
+                "question": "How is this different from hiring a marketing agency?",
+                "answer": "Agencies cost $5K-15K/month, require 6-12 month contracts, keep your data hostage, and you have no control. With MONONIO, you pay $297/month, own everything, and have full transparency into every decision."
+              },
+              {
+                "question": "How is this different from tools like HubSpot or Marketo?",
+                "answer": "Those are complex marketing platforms that require teams to operate. MONONIO is specifically built for business owners who want results without the complexity. Think of it as the iPhone of marketing automation - powerful but simple."
+              },
+              {
+                "question": "What platforms does it work with?",
+                "answer": "Facebook, Instagram, Google Ads, YouTube, TikTok, LinkedIn, Twitter, and 15+ more. One system manages them all."
+              },
+              {
+                "question": "Can I see results before paying?",
+                "answer": "Yes. Start with our free demo where you can watch real campaigns being created for businesses similar to yours."
+              },
+              {
+                "question": "Is my data secure?",
+                "answer": "We use enterprise-grade security (same level as banks) with 256-bit encryption. Your business data never leaves your account, and we never share information with competitors or third parties."
+              },
+              {
+                "question": "What if the campaigns don't work?",
+                "answer": "Our AI monitors performance every 15 minutes and automatically pauses losing ads while scaling winners. If you're not satisfied in the first 30 days, we'll refund your money and help you transition back to your previous setup."
+              },
+              {
+                "question": "What's the catch? This sounds too good to be true.",
+                "answer": "There's no catch. We make money when you succeed, not from setup fees or long contracts. If MONONIO doesn't work for you, you can export everything and leave anytime. Your success is our business model."
+              }
+            ]
+          }
+        },
+        {
+          "sectionName": "CTA",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Ready to Stop Overpaying Agencies?",
+            "subheadline": "Join hundreds of smart business owners who took control of their marketing",
+            "ctaButtons": [
+              {
+                "text": "Watch 5-Min Demo",
+                "style": "primary",
+                "backgroundColor": "#4f46e5"
+              },
+              {
+                "text": "Talk to Expert",
+                "style": "outline",
+                "borderColor": "#6366f1"
+              }
+            ],
+            "backgroundColor": "gray-900 to-black"
+          }
+        }
+      ]
+    },
+    {
+      "pageName": "Case Studies",
+      "url": "/case-studies",
+      "metadata": {
+        "title": "Customer Stories - Real Results from MONONIO AI Users",
+        "description": "See how real businesses are saving thousands with MONONIO AI. Read authentic customer reviews and success stories."
+      },
+      "sections": [
+        {
+          "sectionName": "Hero",
+          "position": "above-fold",
+          "elements": {
+            "headline": "What Our Early Users Are Saying",
+            "subheadline": "Real feedback from businesses using MONONIO",
+            "highlightBox": {
+              "headline": "From Zero to Profitable in 24 Hours",
+              "description": "These are actual campaigns created by our AI - not mock-ups"
+            },
+            "backgroundColor": "#000000",
+            "textColor": "#ffffff",
+            "gradient": "from-indigo-400 to-purple-400"
+          }
+        },
+        {
+          "sectionName": "Reviews",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Real Reviews",
+            "subheadline": "Scroll through authentic customer experiences",
+            "reviews": [
+              {
+                "quote": "I spent 6 months paying an $8K/month agency that couldn't explain where my money was going. With MONONIO, I see every click, every conversion, every dollar. First month: 40% better results.",
+                "author": "Sarah M.",
+                "title": "Boutique Owner",
+                "location": "Austin",
+                "results": "40% better ROAS, $7,700/month savings",
+                "rating": 5
+              },
+              {
+                "quote": "As a freelance consultant, I couldn't afford professional marketing. MONONIO created campaigns I never could have imagined. My lead quality went through the roof.",
+                "author": "Mike R.",
+                "title": "Business Consultant",
+                "location": "Denver",
+                "results": "5x more qualified leads, $297 vs $0 previous budget",
+                "rating": 5
+              },
+              {
+                "quote": "My old agency kept everything locked away. When I wanted to leave, I lost everything. With MONONIO, I own my audiences, my data, everything. And it works better.",
+                "author": "James T.",
+                "title": "Tech Startup Founder",
+                "location": "Seattle",
+                "results": "Owns all data, 60% cost reduction",
+                "rating": 5
+              },
+              {
+                "quote": "I was spending $12K/month on an agency that couldn't explain where my money went. MONONIO shows me every click, every conversion. First month: better results for $297.",
+                "author": "Rachel K.",
+                "title": "E-commerce Owner",
+                "location": "Miami",
+                "results": "Better ROAS, $11,700/month savings",
+                "rating": 5
+              },
+              {
+                "quote": "Finally, marketing that works for real businesses. No jargon, no hidden fees, no 6-month contracts. Just results I can actually understand and control.",
+                "author": "David Chen",
+                "title": "Restaurant Owner",
+                "location": "Portland",
+                "results": "3x more reservations, owns all data",
+                "rating": 5
+              }
+            ],
+            "infiniteScroll": true,
+            "backgroundColor": "#000000"
+          }
+        },
+        {
+          "sectionName": "Stats",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Why Smart Businesses Choose MONONIO",
+            "stats": [
+              {
+                "value": "95%",
+                "label": "Get better results than their previous agency",
+                "color": "indigo-400"
+              },
+              {
+                "value": "24 hours",
+                "label": "Average time to see first results",
+                "color": "purple-400"
+              },
+              {
+                "value": "$8,500",
+                "label": "Average monthly savings vs agencies",
+                "color": "green-400"
+              }
+            ],
+            "backgroundColor": "indigo-900/20 to-purple-900/20"
+          }
+        },
+        {
+          "sectionName": "CTA",
+          "position": "below-fold",
+          "elements": {
+            "headline": "Ready to Stop Overpaying Agencies",
+            "subheadline": "Join smart businesses saving $8,500+ monthly",
+            "ctaButton": {
+              "text": "Get My First Campaign",
+              "style": "primary",
+              "backgroundColor": "#4f46e5"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "globalElements": {
+    "navigation": {
+      "logo": "/brand/Mononio_Logo.png",
+      "logoAlt": "Mononio AI",
+      "menuItems": [
+        {
+          "label": "About",
+          "backgroundColor": "#0D0716",
+          "textColor": "#ffffff",
+          "links": [
+            { "label": "Our Story", "href": "/about", "ariaLabel": "About Mononio AI" },
+            { "label": "Customer Stories", "href": "/case-studies", "ariaLabel": "Customer Stories" },
+            { "label": "FAQ", "href": "/faq", "ariaLabel": "Frequently Asked Questions" }
+          ]
+        },
+        {
+          "label": "Platform",
+          "backgroundColor": "#170D27",
+          "textColor": "#ffffff",
+          "links": [
+            { "label": "Features", "href": "#platform", "ariaLabel": "Features" },
+            { "label": "Pricing", "href": "/pricing", "ariaLabel": "Platform Pricing" },
+            { "label": "Compare", "href": "#platform", "ariaLabel": "Compare" }
+          ]
+        },
+        {
+          "label": "Demo",
+          "backgroundColor": "#271E37",
+          "textColor": "#ffffff",
+          "links": [
+            { "label": "Watch Live Demo", "href": "#Watch Live Demo", "ariaLabel": "Watch Live Demo" },
+            { "label": "Free Trial", "href": "#contact", "ariaLabel": "Free Trial" },
+            { "label": "How It Works", "href": "#contact", "ariaLabel": "How It Works" }
+          ]
+        },
+        {
+          "label": "Sign In",
+          "backgroundColor": "#6D28D9",
+          "textColor": "#ffffff",
+          "links": [
+            { "label": "Login", "href": "/login", "ariaLabel": "Login to your account" },
+            { "label": "Sign Up", "href": "/signup", "ariaLabel": "Create new account" }
+          ]
+        }
+      ]
+    },
+    "footer": "No dedicated footer component found",
+    "popups": [],
+    "components": {
+      "CampaignBox": {
+        "type": "Interactive Form",
+        "features": [
+          "Voice input with speech recognition",
+          "Multi-language support (EN, ES, FR, HE)",
+          "Text area for business description",
+          "Clear functionality",
+          "Gradient CTA button"
+        ],
+        "styling": {
+          "backgroundColor": "black/50",
+          "backdropBlur": "xl",
+          "borderRadius": "2xl",
+          "shadow": "2xl"
+        }
+      },
+      "MagicBento": {
+        "type": "Interactive Cards",
+        "features": [
+          "3D tilt effects on hover",
+          "Particle animations",
+          "Ripple effects on click",
+          "Gradient backgrounds",
+          "Responsive grid layout"
+        ],
+        "styling": {
+          "backgroundColor": "#060010",
+          "borderColor": "gray-700",
+          "hoverEffects": "scale, shadow, border-color"
+        }
+      },
+      "ScrollStack": {
+        "type": "Scroll Animation Component",
+        "features": [
+          "Stacked card animations",
+          "Smooth scroll transitions",
+          "3D transform effects",
+          "Blur effects for depth",
+          "Responsive scaling"
+        ],
+        "styling": {
+          "containerHeight": "min(85vh, 750px)",
+          "cardSpacing": "200px",
+          "animationDuration": "0.6s"
+        }
+      },
+      "AnimatedStats": {
+        "type": "Statistics Display",
+        "features": [
+          "Count-up animations",
+          "Intersection observer triggers",
+          "Hover effects",
+          "Color-coded values",
+          "Responsive grid"
+        ],
+        "styling": {
+          "backgroundColor": "gray-900/50",
+          "borderColor": "gray-800",
+          "hoverEffects": "scale, shadow, border-glow"
+        }
+      },
+      "ReviewCard": {
+        "type": "Customer Review Display",
+        "features": [
+          "Star ratings",
+          "Profile picture placeholders",
+          "Results highlighting",
+          "Gradient backgrounds",
+          "Responsive layout"
+        ],
+        "styling": {
+          "backgroundColor": "gray-900/50",
+          "borderColor": "indigo-500/30",
+          "resultsBackground": "green-900/20"
+        }
+      }
+    }
+  },
+  "designSystem": {
+    "colors": {
+      "primary": {
+        "indigo": "#4f46e5",
+        "purple": "#7c3aed",
+        "blue": "#3b82f6"
+      },
+      "background": {
+        "black": "#000000",
+        "gray-900": "#111827",
+        "gray-800": "#1f2937"
+      },
+      "text": {
+        "white": "#ffffff",
+        "gray-300": "#d1d5db",
+        "gray-400": "#9ca3af"
+      },
+      "accent": {
+        "green": "#10b981",
+        "red": "#ef4444",
+        "yellow": "#f59e0b"
+      }
+    },
+    "typography": {
+      "headings": {
+        "h1": "text-5xl md:text-6xl lg:text-7xl font-bold",
+        "h2": "text-3xl md:text-4xl lg:text-5xl font-bold",
+        "h3": "text-2xl md:text-3xl font-bold"
+      },
+      "body": {
+        "large": "text-lg md:text-xl",
+        "medium": "text-base md:text-lg",
+        "small": "text-sm md:text-base"
+      }
+    },
+    "spacing": {
+      "section": "py-16 md:py-20 lg:py-24",
+      "container": "max-w-7xl mx-auto px-4 sm:px-6",
+      "card": "p-6 md:p-8 lg:p-12"
+    },
+    "animations": {
+      "fadeIn": "animate-fade-in",
+      "slideUp": "animate-slide-up",
+      "scaleIn": "animate-scale-in",
+      "bounce": "animate-bounce",
+      "pulse": "animate-pulse"
+    }
+  },
+  "technicalSpecs": {
+    "framework": "Next.js 14",
+    "styling": "Tailwind CSS",
+    "animations": "Framer Motion, GSAP",
+    "components": "React TypeScript",
+    "responsive": "Mobile-first design",
+    "accessibility": "ARIA labels, keyboard navigation",
+    "performance": "Server-side rendering, image optimization"
+  }
+}

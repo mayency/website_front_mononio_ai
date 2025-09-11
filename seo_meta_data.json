@@ -1,0 +1,108 @@
+{
+  "homepage": {
+    "meta": {
+      "title": "Replace $15K/Month Agencies with AI Marketing - 90% Less Cost | MONONIO",
+      "description": "Stop paying $5K-15K/month for agencies. Get better results for $297/month with MONONIO's AI marketing platform. Free demo available.",
+      "keywords": ["AI marketing alternative to agencies", "small business marketing automation", "replace marketing agency", "$297 vs $15000 agency fees", "AI marketing platform"],
+      "ogImage": "/brand/Mononio_Logo.png",
+      "canonical": "https://mononio.ai/",
+      "robots": "index, follow",
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "MONONIO AI Marketing Platform",
+        "description": "AI-powered marketing automation platform that replaces expensive agencies",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "297",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2025-12-31"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "500"
+        }
+      }
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About MONONIO AI - The Real Reason Agencies Don't Want You to See This",
+      "description": "We got tired of watching small businesses get ripped off by agencies that charge $10K/month for campaigns any smart AI could build better",
+      "keywords": ["MONONIO AI about", "marketing agency alternative", "AI marketing platform story", "small business marketing"],
+      "ogImage": "/brand/Mononio_Logo.png",
+      "canonical": "https://mononio.ai/about",
+      "robots": "index, follow"
+    }
+  },
+  "pricing": {
+    "meta": {
+      "title": "MONONIO AI Pricing - Stop Paying $15K/Month to Agencies",
+      "description": "Get better marketing results for 90% less cost. Professional AI marketing automation starting at $297/month. Compare with traditional agencies.",
+      "keywords": ["AI marketing pricing", "marketing automation cost", "agency alternative", "marketing ROI", "campaign management pricing"],
+      "ogImage": "/brand/Mononio_Logo.png",
+      "canonical": "https://mononio.ai/pricing",
+      "robots": "index, follow"
+    }
+  },
+  "faq": {
+    "meta": {
+      "title": "FAQ - Everything You Need to Know | MONONIO AI",
+      "description": "Get honest answers to your most important questions about MONONIO AI. Learn how our platform works, pricing, security, and more.",
+      "keywords": ["MONONIO AI FAQ", "marketing automation questions", "AI marketing platform", "small business marketing"],
+      "ogImage": "/brand/Mononio_Logo.png",
+      "canonical": "https://mononio.ai/faq",
+      "robots": "index, follow"
+    }
+  },
+  "caseStudies": {
+    "meta": {
+      "title": "Customer Stories - Real Results from MONONIO AI Users",
+      "description": "See how real businesses are saving thousands with MONONIO AI. Read authentic customer reviews and success stories.",
+      "keywords": ["MONONIO AI reviews", "customer success stories", "marketing automation results", "AI marketing testimonials"],
+      "ogImage": "/brand/Mononio_Logo.png",
+      "canonical": "https://mononio.ai/case-studies",
+      "robots": "index, follow"
+    }
+  },
+  "globalMeta": {
+    "viewport": "width=device-width, initial-scale=1",
+    "themeColor": "#4f46e5",
+    "author": "MONONIO AI",
+    "publisher": "MONONIO AI",
+    "language": "en-US",
+    "charset": "UTF-8"
+  },
+  "structuredData": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MONONIO AI",
+      "url": "https://mononio.ai",
+      "logo": "https://mononio.ai/brand/Mononio_Logo.png",
+      "description": "AI-powered marketing automation platform that replaces expensive agencies",
+      "foundingDate": "2024",
+      "founders": ["MONONIO Team"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Spanish", "French", "Hebrew"]
+      }
+    },
+    "breadcrumbList": {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mononio.ai"
+        }
+      ]
+    }
+  }
+}

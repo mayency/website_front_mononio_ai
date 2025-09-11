@@ -116,13 +116,17 @@ const CampaignBox = () => {
   };
 
   return (
-    <div className="bg-black/50 backdrop-blur-xl p-6 rounded-2xl shadow-2xl max-w-xl w-full">
+    <div className="bg-black/50 backdrop-blur-xl p-12 rounded-2xl shadow-2xl max-w-xl w-full">
       <div className="relative">
         <textarea
           ref={textareaRef}
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder="Describe your business, target audience, and goals. Our smart system will create the campaign for you..."
+          placeholder="Tell us about your business in 1-2 sentences:
+What do you sell? Who? And what is the goal?
+
+Example: Selling online courses to students,
+Want 100 signups this month, budget $3,000"
           className="w-full h-32 p-4 pr-20 text-white bg-black/40 rounded-lg resize-none focus:outline-none"
         />
 
@@ -159,7 +163,7 @@ const CampaignBox = () => {
       </div>
 
       <button className="mt-4 w-full py-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg font-semibold text-white">
-        Create my campaign
+        Start My Success Story
       </button>
     </div>
   );

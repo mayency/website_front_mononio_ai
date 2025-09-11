@@ -28,6 +28,7 @@
   "dependencies": {
     "@headlessui/react": "^2.2.7",
     "framer-motion": "^12.23.12",
+    "googleapis": "^159.0.0",
     "gsap": "^3.13.0",
     "jest-util": "^30.0.5",
     "lucide-react": "^0.540.0",
@@ -39,6 +40,7 @@
     "react-icons": "^5.5.0",
     "recharts": "^3.1.2",
     "reusify": "^1.1.0",
+    "tar": "^7.4.3",
     "zod": "^4.0.17"
   },
   "devDependencies": {

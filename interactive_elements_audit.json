@@ -1,0 +1,212 @@
+{
+  "forms": [
+    {
+      "name": "CampaignBox Form",
+      "location": "Homepage Hero Section",
+      "fields": [
+        {
+          "name": "Business Description",
+          "type": "textarea",
+          "placeholder": "Tell us about your business in 1-2 sentences...",
+          "validation": "Required, min 10 characters",
+          "features": ["Voice input", "Multi-language support", "Clear button"]
+        }
+      ],
+      "languages": ["en-US", "es-ES", "fr-FR", "he-IL"],
+      "voiceInput": {
+        "supported": true,
+        "browserSupport": "Chrome, Safari, Edge",
+        "features": ["Continuous listening", "Interim results", "Auto-restart"]
+      },
+      "submission": {
+        "button": "Start My Success Story",
+        "action": "Form submission to backend",
+        "styling": "Gradient purple-to-blue button"
+      }
+    }
+  ],
+  "buttons": [
+    {
+      "text": "Start My Success Story",
+      "location": "CampaignBox Form",
+      "style": "Primary gradient button",
+      "destination": "Form submission",
+      "styling": "bg-gradient-to-r from-purple-500 to-blue-500"
+    },
+    {
+      "text": "Stop Losing to Smarter Competitors",
+      "location": "Contact Section",
+      "style": "Primary gradient button",
+      "destination": "Contact form or demo",
+      "styling": "bg-gradient-to-r from-purple-600 to-blue-600"
+    },
+    {
+      "text": "Start Free Trial",
+      "location": "Pricing Page",
+      "style": "Primary button",
+      "destination": "Sign up form",
+      "styling": "bg-indigo-600"
+    },
+    {
+      "text": "Watch 5-Min Demo",
+      "location": "FAQ Page",
+      "style": "Primary button",
+      "destination": "Demo video",
+      "styling": "bg-indigo-500"
+    },
+    {
+      "text": "Talk to Expert",
+      "location": "FAQ Page",
+      "style": "Outline button",
+      "destination": "Contact form",
+      "styling": "border border-indigo-500"
+    }
+  ],
+  "videos": [
+    {
+      "name": "Abstract Neon Clouds Background",
+      "location": "Homepage Hero Section",
+      "src": "/videos/Abstract_Neon_Clouds1.mp4",
+      "settings": {
+        "autoplay": true,
+        "loop": true,
+        "muted": true,
+        "playsInline": true
+      },
+      "responsive": "Hidden on mobile, visible on desktop",
+      "styling": "opacity-30, object-cover"
+    }
+  ],
+  "animations": [
+    {
+      "element": "Hero Content",
+      "type": "Fade In",
+      "trigger": "On page load",
+      "duration": "0.6s",
+      "easing": "ease-out"
+    },
+    {
+      "element": "Headline Text",
+      "type": "Slide Up",
+      "trigger": "On page load",
+      "duration": "0.8s",
+      "easing": "ease-out"
+    },
+    {
+      "element": "Campaign Box",
+      "type": "Scale In",
+      "trigger": "On page load with delay",
+      "duration": "0.6s",
+      "delay": "600ms",
+      "easing": "ease-out"
+    },
+    {
+      "element": "Logo Cloud",
+      "type": "Horizontal Scroll",
+      "trigger": "Continuous",
+      "duration": "40s",
+      "easing": "linear",
+      "hover": "Pauses on hover"
+    },
+    {
+      "element": "Scroll Indicator",
+      "type": "Bounce",
+      "trigger": "Continuous",
+      "duration": "2s",
+      "easing": "ease-in-out"
+    },
+    {
+      "element": "Background Particles",
+      "type": "Pulse",
+      "trigger": "Continuous",
+      "duration": "2s",
+      "easing": "ease-in-out"
+    }
+  ],
+  "hoverEffects": [
+    {
+      "element": "Campaign Box",
+      "effect": "Glow effect with gradient border",
+      "trigger": "Hover",
+      "styling": "group-hover:opacity-40 transition duration-1000"
+    },
+    {
+      "element": "CTA Buttons",
+      "effect": "Scale and color change",
+      "trigger": "Hover",
+      "styling": "hover:scale-105 transition-all duration-200"
+    },
+    {
+      "element": "Logo Cloud",
+      "effect": "Pause animation",
+      "trigger": "Hover",
+      "styling": "hover:animation-play-state-paused"
+    }
+  ],
+  "dropdownMenus": [
+    {
+      "name": "About Menu",
+      "location": "Navigation Bar",
+      "items": [
+        "Our Story",
+        "Customer Stories", 
+        "FAQ"
+      ],
+      "styling": "Card-based dropdown with background colors"
+    },
+    {
+      "name": "Platform Menu",
+      "location": "Navigation Bar",
+      "items": [
+        "Features",
+        "Pricing",
+        "Compare"
+      ],
+      "styling": "Card-based dropdown with background colors"
+    },
+    {
+      "name": "Demo Menu",
+      "location": "Navigation Bar",
+      "items": [
+        "Watch Live Demo",
+        "Free Trial",
+        "How It Works"
+      ],
+      "styling": "Card-based dropdown with background colors"
+    },
+    {
+      "name": "Sign In Menu",
+      "location": "Navigation Bar",
+      "items": [
+        "Login",
+        "Sign Up"
+      ],
+      "styling": "Card-based dropdown with background colors"
+    }
+  ],
+  "calculators": [],
+  "chatWidgets": [],
+  "specialFeatures": [
+    {
+      "name": "Voice Input",
+      "description": "Speech-to-text functionality in CampaignBox",
+      "browserSupport": "Chrome, Safari, Edge",
+      "languages": ["English", "Spanish", "French", "Hebrew"]
+    },
+    {
+      "name": "Scroll Animations",
+      "description": "Elements animate as they come into view",
+      "library": "CSS animations with intersection observer"
+    },
+    {
+      "name": "3D Tilt Effects",
+      "description": "Cards tilt on hover in MagicBento component",
+      "library": "Custom CSS transforms"
+    },
+    {
+      "name": "Particle Background",
+      "description": "Animated background particles with blur effects",
+      "styling": "mix-blend-multiply with opacity animations"
+    }
+  ]
+}

@@ -22,6 +22,12 @@
 /* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 body {
@@ -31,6 +37,14 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Scrollbar hiding */
+  overflow-y: auto; /* Keep scroll functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 /* ✨ אנימציית ברק */
@@ -152,6 +166,7 @@ img {
 .animation-delay-800 {
   animation-delay: 800ms;
 }
+
 /* LogoCloud scroll animation */
 @keyframes scroll {
   0% {
@@ -169,7 +184,6 @@ img {
 .animate-scroll:hover {
   animation-play-state: paused;
 }
-
 
 /* LogoCloud scroll animation */
 @keyframes scroll-logos {
@@ -201,4 +215,23 @@ img {
   .animate-scroll-logos {
     animation-duration: 60s;
   }
+}
+
+/* Optimize scroll performance for ScrollStack */
+.scroll-stack-container {
+  contain: layout style paint;
+  transform: translateZ(0);
+  will-change: scroll-position;
+}
+
+.scroll-stack-card {
+  contain: layout style paint;
+  transform: translateZ(0);
+  will-change: transform, filter;
+}
+
+/* Improve scroll responsiveness */
+.scroll-stack-container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }

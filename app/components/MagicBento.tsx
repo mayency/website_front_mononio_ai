@@ -115,9 +115,12 @@ const ParticleCard: React.FC<{
   return (
     <div
       ref={cardRef}
-      className="relative p-6 rounded-xl border border-gray-700 shadow-lg transition-all duration-300 ease-in-out bg-[#060010] hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(132,0,255,0.6)]"
+      className="relative p-6 rounded-xl border border-gray-700 shadow-lg transition-all duration-300 ease-in-out bg-[#060010] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(132,0,255,0.8)] hover:border-purple-400"
       style={{ color: "white" }}
     >
+      {/* Glow Effect על Hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/0 via-purple-500/0 to-blue-600/0 hover:from-purple-600/10 hover:via-purple-500/5 hover:to-blue-600/10 rounded-xl transition-all duration-300 pointer-events-none"></div>
+      
       {/* 🌌 Particles */}
       {particles.map((p, idx) => (
         <div

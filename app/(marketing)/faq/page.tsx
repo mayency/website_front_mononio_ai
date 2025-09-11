@@ -21,7 +21,7 @@ export default function FAQPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Logo Header */}
-      <div className="absolute top-0 left-6 z-50">
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-50">
         <Link
           href="/"
           aria-label="Go to homepage"
@@ -32,7 +32,7 @@ export default function FAQPage() {
             src="/brand/Mononio_Logo.png"
             alt="Mononio AI Logo"
             width={120}
-            height={60}
+            height={80}
             className="h-[22px] sm:h-[28px] lg:h-[35px] xl:h-[39px] 2xl:h-[45px] w-auto object-contain drop-shadow-xl transition-transform hover:scale-105"
             priority
           />
