@@ -1,800 +1,489 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Button from "../../../components/ui/Button";
-import Navbar from "../../../components/Navbar";
+import React, { useState, useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
+import Navbar from '@/app/components/Navbar';
+import LogoCloud from '@/app/components/LogoCloud';
+import SavingsCalculator from '@/app/components/SavingsCalculator';
+import PricingBenefits from './PricingBenefits';
+import PricingComparisonTable from './PricingComparisonTable';
+import PricingTestimonials from './PricingTestimonials';
+import { Check, X, Calculator, ChevronDown, Sparkles, Zap, Shield, ArrowRight } from 'lucide-react';
+
+// Lazy load heavy components for better performance
+const LazyMotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), {
+  ssr: false,
+});
 
 interface PricingPlan {
   name: string;
-  price: number;
-  period: string;
+  monthlyPrice: number;
+  yearlyPrice: number;
   description: string;
   features: string[];
-  cta: string;
+  notIncluded?: string[];
   popular?: boolean;
   savings?: string;
 }
 
-const pricingPlans: PricingPlan[] = [
-  {
-    name: "Starter",
-    price: 297,
-    period: "month",
-    description: "Perfect for small businesses getting started with AI marketing",
-    features: [
-      "Up to 5 active campaigns",
-      "Facebook + Google Ads integration",
-      "Basic AI optimization",
-      "Email support",
-      "Monthly performance reports",
-      "Campaign templates library"
-    ],
-    cta: "Start Free Trial",
-    savings: "Save $4,703/month vs agencies"
-  },
-  {
-    name: "Professional",
-    price: 597,
-    period: "month",
-    description: "The complete solution for growing businesses",
-    features: [
-      "Unlimited campaigns",
-      "All platforms (Facebook, Google, TikTok, LinkedIn, Instagram, YouTube)",
-      "24/7 AI optimization",
-      "Priority support",
-      "Weekly detailed reports",
-      "Advanced analytics dashboard",
-      "A/B testing automation",
-      "Custom audience targeting"
-    ],
-    cta: "Start Free Trial",
-    popular: true,
-    savings: "Save $9,403/month vs agencies"
-  },
-  {
-    name: "Enterprise",
-    price: 997,
-    period: "month",
-    description: "For large organizations with advanced needs",
-    features: [
-      "Everything in Professional",
-      "White-label options",
-      "Custom reporting",
-      "Dedicated account manager",
-      "API access",
-      "Custom integrations",
-      "Advanced security features",
-      "SLA guarantee"
-    ],
-    cta: "Contact Sales",
-    savings: "Save $14,003/month vs agencies"
-  }
-];
-
-const comparisonData = [
-  {
-    feature: "Monthly Cost",
-    agency: "$5,000 - $15,000",
-    mononio: "$297 - $997",
-    advantage: "mononio"
-  },
-  {
-    feature: "Setup Time",
-    agency: "2-4 weeks",
-    mononio: "5 minutes",
-    advantage: "mononio"
-  },
-  {
-    feature: "Platforms Supported",
-    agency: "Limited (2-3)",
-    mononio: "10+ platforms",
-    advantage: "mononio"
-  },
-  {
-    feature: "Optimization",
-    agency: "Manual (business hours)",
-    mononio: "24/7 AI automation",
-    advantage: "mononio"
-  },
-  {
-    feature: "Transparency",
-    agency: "Limited reporting",
-    mononio: "Full visibility & control",
-    advantage: "mononio"
-  },
-  {
-    feature: "Scalability",
-    agency: "Requires more staff",
-    mononio: "Instant scaling",
-    advantage: "mononio"
-  }
-];
-
-const faqData = [
-  {
-    question: "How much can I save compared to hiring a marketing agency?",
-    answer: "Most businesses save 85-95% compared to traditional agencies. A typical agency charges $5,000-$15,000/month, while MONONIO AI starts at just $297/month with better results."
-  },
-  {
-    question: "What's included in the free trial?",
-    answer: "The free trial includes full access to all features for 14 days. You can create campaigns, connect your ad accounts, and see real results with no credit card required."
-  },
-  {
-    question: "Can I switch plans anytime?",
-    answer: "Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any differences."
-  },
-  {
-    question: "Do you offer a money-back guarantee?",
-    answer: "We offer a 30-day money-back guarantee. If you're not satisfied with the results, we'll refund your payment in full."
-  },
-  {
-    question: "How does the AI optimization work?",
-    answer: "Our AI continuously monitors your campaigns, adjusts bids, optimizes targeting, and tests new creative variations 24/7 to maximize your ROI."
-  },
-  {
-    question: "What platforms do you support?",
-    answer: "We support Facebook, Instagram, Google Ads, TikTok, LinkedIn, YouTube, Twitter, Pinterest, Snapchat, and more. New platforms are added regularly."
-  }
-];
-
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.6 }
-  }
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { 
-    opacity: 1, 
-    scale: 1,
-    transition: { duration: 0.6 }
-  }
-};
-
-const slideInLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: { duration: 0.6 }
-  }
-};
-
-const slideInRight = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: { duration: 0.6 }
-  }
-};
-
 export default function PricingPageClient() {
-  const [selectedPlan, setSelectedPlan] = useState<number>(1); // Professional plan
   const [showCalculator, setShowCalculator] = useState(false);
-  const [agencyCost, setAgencyCost] = useState(10000);
-  const [calculatedSavings, setCalculatedSavings] = useState(9403);
+  const [isVisible, setIsVisible] = useState(false);
+  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('yearly');
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
-  const handleSavingsCalculation = () => {
-    const savings = agencyCost - 597; // Professional plan price
-    setCalculatedSavings(Math.max(0, savings));
+  // Performance optimization - intersection observer for animations
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const plans: PricingPlan[] = [
+    {
+      name: 'Starter',
+      monthlyPrice: 299,
+      yearlyPrice: 2990,
+      description: 'Perfect for small businesses getting started with AI marketing',
+      features: [
+        'Up to 5 campaigns per month',
+        'Basic AI optimization',
+        '3 platform integrations (Facebook, Google, Instagram)',
+        'Email support (24h response)',
+        'Basic analytics dashboard',
+        'Campaign templates library',
+        '1 user account',
+      ],
+      notIncluded: [
+        'Advanced AI features',
+        'Custom integrations',
+        'Priority support',
+        'White-label options',
+        'API access',
+      ],
+    },
+    {
+      name: 'Professional',
+      monthlyPrice: 799,
+      yearlyPrice: 7990,
+      description: 'Scale your marketing with advanced AI capabilities',
+      features: [
+        'Up to 20 campaigns per month',
+        'Advanced AI optimization & predictions',
+        '8 platform integrations',
+        'Priority email & chat support (2h response)',
+        'Advanced analytics & custom reports',
+        'A/B testing with AI recommendations',
+        'Custom audiences & lookalikes',
+        '5 user accounts',
+        'Campaign automation workflows',
+        'Performance alerts & monitoring',
+      ],
+      notIncluded: [
+        'Unlimited campaigns',
+        'Custom integrations',
+        'Dedicated account manager',
+        'White-label options',
+      ],
+      popular: true,
+      savings: 'Save $1,598/year',
+    },
+    {
+      name: 'Enterprise',
+      monthlyPrice: 2499,
+      yearlyPrice: 24990,
+      description: 'Complete solution for large organizations and agencies',
+      features: [
+        'Unlimited campaigns',
+        'Full AI suite with custom ML models',
+        'All 12+ platform integrations',
+        '24/7 dedicated support & Slack channel',
+        'Custom analytics & white-label reports',
+        'Full white-label options',
+        'RESTful API & webhooks',
+        'Custom integrations development',
+        'Dedicated account manager',
+        'Quarterly business reviews',
+        'Training & onboarding (10 hours)',
+        'Unlimited user accounts',
+        'SSO & advanced security',
+        'SLA guarantee (99.9% uptime)',
+      ],
+      notIncluded: [],
+      savings: 'Save $4,998/year',
+    },
+  ];
+
+  const faqs = [
+    {
+      question: 'Can I change plans anytime?',
+      answer: 'Yes! You can upgrade or downgrade your plan at any time. When upgrading, you\'ll be charged the prorated difference immediately. When downgrading, the change takes effect at the next billing cycle.',
+    },
+    {
+      question: 'Is there a free trial available?',
+      answer: 'Absolutely! We offer a 14-day free trial for all plans. No credit card required. You\'ll have full access to all features during the trial period.',
+    },
+    {
+      question: 'What payment methods do you accept?',
+      answer: 'We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and for Enterprise plans, we also offer bank transfers and custom invoicing.',
+    },
+    {
+      question: 'Do you offer refunds?',
+      answer: 'Yes, we offer a 30-day money-back guarantee. If you\'re not satisfied with MONONIO AI within the first 30 days, we\'ll refund your payment in full.',
+    },
+    {
+      question: 'What happens when I reach my campaign limit?',
+      answer: 'You\'ll receive a notification when you\'re approaching your limit. You can either upgrade your plan or purchase additional campaigns as needed. Unused campaigns don\'t roll over to the next month.',
+    },
+    {
+      question: 'Can I white-label the platform for my agency?',
+      answer: 'White-label options are available with our Enterprise plan. This includes custom branding, domain, and client portals. Contact our sales team for detailed customization options.',
+    },
+  ];
+
+  const handlePlanSelect = (planName: string) => {
+    setSelectedPlan(planName);
+    // Scroll to contact form or trigger signup modal
+    const contactSection = document.getElementById('contact-section');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-indigo-900">
-      {/* Navigation Bar */}
-      <div className="relative z-20">
-        <Navbar />
-      </div>
-
-      {/* Floating Eyes Animation */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Floating Eyes */}
-        <motion.div
-          className="absolute top-20 left-10 w-8 h-8 bg-white rounded-full opacity-20"
-          animate={{
-            y: [0, -20, 0],
-            x: [0, 10, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <div className="absolute top-1 left-1 w-2 h-2 bg-black rounded-full"></div>
-          <div className="absolute top-1 right-1 w-2 h-2 bg-black rounded-full"></div>
-        </motion.div>
-        
-        <motion.div
-          className="absolute top-32 right-16 w-6 h-6 bg-white rounded-full opacity-15"
-          animate={{
-            y: [0, -15, 0],
-            x: [0, -8, 0],
-          }}
-          transition={{
-            duration: 3.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        >
-          <div className="absolute top-1 left-1 w-1.5 h-1.5 bg-black rounded-full"></div>
-          <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-black rounded-full"></div>
-        </motion.div>
-        
-        <motion.div
-          className="absolute top-40 left-1/4 w-7 h-7 bg-white rounded-full opacity-18"
-          animate={{
-            y: [0, -25, 0],
-            x: [0, 12, 0],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-        >
-          <div className="absolute top-1 left-1 w-2 h-2 bg-black rounded-full"></div>
-          <div className="absolute top-1 right-1 w-2 h-2 bg-black rounded-full"></div>
-        </motion.div>
-        
-        <motion.div
-          className="absolute top-60 right-1/3 w-5 h-5 bg-white rounded-full opacity-12"
-          animate={{
-            y: [0, -18, 0],
-            x: [0, -6, 0],
-          }}
-          transition={{
-            duration: 4.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5,
-          }}
-        >
-          <div className="absolute top-1 left-1 w-1 h-1 bg-black rounded-full"></div>
-          <div className="absolute top-1 right-1 w-1 h-1 bg-black rounded-full"></div>
-        </motion.div>
-        
-        <motion.div
-          className="absolute top-80 left-1/3 w-6 h-6 bg-white rounded-full opacity-16"
-          animate={{
-            y: [0, -22, 0],
-            x: [0, 8, 0],
-          }}
-          transition={{
-            duration: 3.8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1.5,
-          }}
-        >
-          <div className="absolute top-1 left-1 w-1.5 h-1.5 bg-black rounded-full"></div>
-          <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-black rounded-full"></div>
-        </motion.div>
-      </div>
-
-      {/* Enhancement 2: Urgency Banner */}
-      <motion.div 
-        className="bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-4 text-center relative z-10"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
+    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
+      <Navbar />
+      
+      {/* Hero Section with Gradient Animation */}
+      <div 
+        ref={heroRef}
+        className={`relative overflow-hidden bg-gradient-to-b from-gray-900 via-purple-900/20 to-gray-900 py-24 sm:py-32 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
       >
-        <div className="max-w-4xl mx-auto">
-          <span className="font-semibold">Limited Time Offer:</span> Save additional 20% on annual plans.
-          <span className="ml-2 text-yellow-200">Expires in 3 days</span>
-        </div>
-      </motion.div>
+        {/* Animated background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-800/20 via-indigo-800/20 to-purple-800/20 animate-pulse" />
+        
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            {/* Trust Badge */}
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-2 text-sm text-purple-400">
+              <Shield className="w-4 h-4" />
+              <span>Trusted by 500+ companies worldwide</span>
+            </div>
 
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 md:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div 
-            className="mb-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={scaleIn}
-          >
-            <Image
-              src="/brand/Mononio_Logo.png"
-              alt="MONONIO AI Logo"
-              width={120}
-              height={120}
-              className="mx-auto mb-6 w-20 h-20 md:w-24 md:h-24"
-            />
-          </motion.div>
-          
-          <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-          >
-            Stop Paying{" "}
-            <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-              $15K/Month
-            </span>{" "}
-            to Agencies
-          </motion.h1>
-          
-          <motion.h2 
-            className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 max-w-4xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-            transition={{ delay: 0.2 }}
-          >
-            Get Better Results for{" "}
-            <span className="text-green-400 font-semibold">90% Less Cost</span>
-          </motion.h2>
-
-          {/* Cost Comparison Visual */}
-          <motion.div 
-            className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={staggerContainer}
-          >
-            <motion.div 
-              className="bg-red-900/20 border border-red-500/30 rounded-2xl p-6"
-              variants={slideInLeft}
-            >
-              <h3 className="text-2xl font-bold text-red-400 mb-4">Traditional Agency</h3>
-              <div className="text-4xl font-bold text-red-300 mb-2">$5,000 - $15,000</div>
-              <div className="text-gray-400">per month</div>
-              <ul className="text-left mt-4 space-y-2 text-gray-300">
-                <li>• 2-4 week setup</li>
-                <li>• Limited platforms</li>
-                <li>• Manual optimization</li>
-                <li>• Limited transparency</li>
-              </ul>
-            </motion.div>
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Pricing that scales
+              </span>
+              <br />
+              with your growth
+            </h1>
             
-            <motion.div 
-              className="bg-green-900/20 border border-green-500/30 rounded-2xl p-6"
-              variants={slideInRight}
-            >
-              <h3 className="text-2xl font-bold text-green-400 mb-4">MONONIO AI</h3>
-              <div className="text-4xl font-bold text-green-300 mb-2">$297 - $997</div>
-              <div className="text-gray-400">per month</div>
-              <ul className="text-left mt-4 space-y-2 text-gray-300">
-                <li>• 5 minute setup</li>
-                <li>• 10+ platforms</li>
-                <li>• 24/7 AI optimization</li>
-                <li>• Full transparency</li>
-              </ul>
-            </motion.div>
-          </motion.div>
-
-          {/* Enhancement 1: Trust Statistics */}
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={staggerContainer}
-          >
-            <motion.div 
-              className="text-center"
-              variants={fadeInUp}
-            >
-              <div className="text-3xl font-bold text-green-400">500+</div>
-              <div className="text-gray-400 text-sm">Businesses Switched</div>
-            </motion.div>
-            <motion.div 
-              className="text-center"
-              variants={fadeInUp}
-            >
-              <div className="text-3xl font-bold text-green-400">$2.3M</div>
-              <div className="text-gray-400 text-sm">Collectively Saved</div>
-            </motion.div>
-            <motion.div 
-              className="text-center"
-              variants={fadeInUp}
-            >
-              <div className="text-3xl font-bold text-green-400">340%</div>
-              <div className="text-gray-400 text-sm">Average ROI Increase</div>
-            </motion.div>
-            <motion.div 
-              className="text-center"
-              variants={fadeInUp}
-            >
-              <div className="text-3xl font-bold text-green-400">47</div>
-              <div className="text-gray-400 text-sm">Switched This Week</div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg"
-              onClick={() => setShowCalculator(!showCalculator)}
-            >
-              Calculate Your Savings
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Savings Calculator */}
-      {showCalculator && (
-        <motion.section 
-          className="py-12 px-4 md:px-6 lg:px-8 bg-white/5 backdrop-blur-sm"
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-        >
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-3xl font-bold text-white mb-8">Savings Calculator</h3>
-            <div className="bg-white/10 rounded-2xl p-8">
-              <div className="mb-6">
-                <label className="block text-white text-lg mb-4">
-                  What do you currently pay your marketing agency per month?
-                </label>
-                <input
-                  type="range"
-                  min="3000"
-                  max="20000"
-                  step="500"
-                  value={agencyCost}
-                  onChange={(e) => setAgencyCost(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
-                />
-                <div className="flex justify-between text-gray-400 mt-2">
-                  <span>$3,000</span>
-                  <span className="text-2xl font-bold text-white">${agencyCost.toLocaleString()}</span>
-                  <span>$20,000</span>
-                </div>
-              </div>
-              
-              <div className="bg-green-900/30 border border-green-500/50 rounded-xl p-6 mb-6">
-                <div className="text-4xl font-bold text-green-400 mb-2">
-                  Save ${calculatedSavings.toLocaleString()}/month
-                </div>
-                <div className="text-gray-300">
-                  That's ${(calculatedSavings * 12).toLocaleString()} per year!
-                </div>
-              </div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Start with our 14-day free trial. No credit card required.
+              <br />
+              Join 500+ companies achieving 10x ROI with MONONIO AI.
+            </p>
+            
+            {/* Calculate Savings Button - Safari Fix Applied */}
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => setShowCalculator(!showCalculator)}
+                style={{
+                  WebkitAppearance: 'none',
+                  outline: 'none',
+                  border: 'none',
+                  WebkitTapHighlightColor: 'transparent'
+                }}
+                className="calculator-button group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5"
               >
-                <Button 
-                  onClick={handleSavingsCalculation}
-                  className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg"
-                >
-                  Start Your Free Trial
-                </Button>
-              </motion.div>
+                <Calculator className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                Calculate Your Savings
+                <Sparkles className="absolute -top-2 -right-2 w-5 h-5 text-yellow-400 animate-pulse" />
+              </button>
+              
+              <a
+                href="#plans"
+                style={{
+                  WebkitAppearance: 'none',
+                  outline: 'none',
+                  WebkitTapHighlightColor: 'transparent'
+                }}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gray-800 text-white font-semibold rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-xl"
+              >
+                View Plans
+                <ChevronDown className="w-5 h-5" />
+              </a>
             </div>
           </div>
-        </motion.section>
+
+          {/* Billing Toggle */}
+          <div className="mt-16 flex justify-center items-center gap-4">
+            <span className={`font-medium transition-colors ${
+              billingPeriod === 'monthly' ? 'text-white' : 'text-gray-400'
+            }`}>
+              Monthly
+            </span>
+            <button
+              onClick={() => setBillingPeriod(billingPeriod === 'monthly' ? 'yearly' : 'monthly')}
+              style={{
+                WebkitAppearance: 'none',
+                outline: 'none',
+                WebkitTapHighlightColor: 'transparent'
+              }}
+              className="relative inline-flex h-8 w-14 items-center rounded-full bg-gray-700 transition-colors hover:bg-gray-600"
+              aria-label="Toggle billing period"
+            >
+              <span
+                className={`inline-block h-6 w-6 transform rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-transform shadow-lg ${
+                  billingPeriod === 'yearly' ? 'translate-x-7' : 'translate-x-1'
+                }`}
+              />
+            </button>
+            <span className={`font-medium transition-colors ${
+              billingPeriod === 'yearly' ? 'text-white' : 'text-gray-400'
+            }`}>
+              Yearly
+              <span className="ml-2 inline-flex items-center gap-1 text-green-400 text-sm font-bold">
+                <Zap className="w-3 h-3" />
+                Save 20%
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Savings Calculator - Conditional Render with Animation */}
+      {showCalculator && (
+        <div className="relative z-50 animate-fadeIn">
+          <SavingsCalculator 
+            mode="inline"
+            onClose={() => setShowCalculator(false)}
+          />
+        </div>
       )}
 
       {/* Pricing Cards */}
-      <section className="py-20 px-4 md:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={fadeInUp}
+      <div id="plans" className="mx-auto max-w-7xl px-6 lg:px-8 pb-24">
+        <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
+          {plans.map((plan, index) => (
+            <div
+              key={plan.name}
+              className={`relative rounded-2xl p-8 transition-all duration-500 hover:scale-105 hover:shadow-2xl ${
+                plan.popular
+                  ? 'bg-gradient-to-b from-purple-900/50 to-gray-800 ring-2 ring-purple-500 shadow-xl shadow-purple-500/20'
+                  : 'bg-gray-800 hover:bg-gray-800/90'
+              }`}
+              style={{
+                animationDelay: `${index * 100}ms`,
+              }}
             >
-              Choose Your Plan
-            </motion.h2>
-            <motion.p 
-              className="text-xl text-gray-300 max-w-3xl mx-auto"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={fadeInUp}
-              transition={{ delay: 0.2 }}
-            >
-              All plans include our core AI optimization features. Scale up as you grow.
-            </motion.p>
-          </div>
-
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={staggerContainer}
-          >
-            {pricingPlans.map((plan, index) => (
-              <motion.div
-                key={plan.name}
-                className={`relative bg-white/5 backdrop-blur-sm rounded-2xl p-8 border-2 transition-all duration-300 hover:scale-105 ${
-                  plan.popular
-                    ? "border-indigo-500 shadow-2xl shadow-indigo-500/20"
-                    : "border-gray-700 hover:border-gray-500"
-                }`}
-                variants={scaleIn}
-                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-              >
-                {/* Enhancement 5: Money-back guarantee badge */}
-                <div className="absolute top-4 right-4">
-                  <div className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-                    30-Day Guarantee
-                  </div>
+              {/* Popular Badge */}
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 px-4 py-1 text-sm font-semibold text-white shadow-lg">
+                    <Sparkles className="w-4 h-4" />
+                    Most Popular
+                  </span>
                 </div>
+              )}
 
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold">
-                      Most Popular
+              {/* Savings Badge */}
+              {plan.savings && billingPeriod === 'yearly' && (
+                <div className="absolute -top-4 -right-4 z-10">
+                  <span className="inline-flex items-center rounded-full bg-green-500 px-3 py-1 text-xs font-bold text-white shadow-lg animate-pulse">
+                    {plan.savings}
+                  </span>
+                </div>
+              )}
+
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                <p className="text-gray-400 text-sm">{plan.description}</p>
+                
+                {/* Pricing */}
+                <div className="mt-6">
+                  <p className="flex items-baseline gap-2">
+                    <span className="text-5xl font-bold text-white">
+                      ${billingPeriod === 'monthly' ? plan.monthlyPrice.toLocaleString() : plan.yearlyPrice.toLocaleString()}
                     </span>
-                  </div>
-                )}
-
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                  <p className="text-gray-400 mb-6">{plan.description}</p>
-                  
-                  <div className="mb-4">
-                    <span className="text-5xl font-bold text-white">${plan.price}</span>
-                    <span className="text-gray-400 ml-2">/{plan.period}</span>
-                  </div>
-                  
-                  {plan.savings && (
-                    <div className="text-green-400 font-semibold text-sm mb-6">
-                      {plan.savings}
-                    </div>
+                    <span className="text-gray-400">
+                      /{billingPeriod === 'monthly' ? 'month' : 'year'}
+                    </span>
+                  </p>
+                  {billingPeriod === 'yearly' && (
+                    <p className="mt-1 text-sm text-gray-500">
+                      (${Math.round(plan.yearlyPrice / 12)}/month)
+                    </p>
                   )}
                 </div>
+              </div>
 
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start">
-                      <svg className="w-5 h-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+              {/* Features List */}
+              <ul className="mb-8 space-y-4">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start group">
+                    <Check className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                    <span className="text-gray-300 text-sm">{feature}</span>
+                  </li>
+                ))}
+                {plan.notIncluded?.map((feature) => (
+                  <li key={feature} className="flex items-start opacity-50">
+                    <X className="h-5 w-5 text-gray-500 mt-0.5 mr-3 flex-shrink-0" />
+                    <span className="text-gray-500 text-sm line-through">{feature}</span>
+                  </li>
+                ))}
+              </ul>
 
-                {/* Enhancement 3: Social Proof for each plan */}
-                <div className="bg-white/5 rounded-lg p-3 mb-6 text-center">
-                  <div className="text-sm text-gray-300">
-                    {plan.name === 'Starter' && "127 businesses chose this plan this month"}
-                    {plan.name === 'Professional' && "284 businesses chose this plan this month"}
-                    {plan.name === 'Enterprise' && "43 businesses chose this plan this month"}
-                  </div>
-                </div>
-
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Button
-                    className={`w-full py-4 text-lg font-semibold rounded-xl transition-all duration-300 ${
-                      plan.popular
-                        ? "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white"
-                        : "bg-white/10 hover:bg-white/20 text-white border border-white/20"
-                    }`}
-                  >
-                    {plan.cta}
-                  </Button>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Comparison Table */}
-      <section className="py-20 px-4 md:px-6 lg:px-8 bg-white/5 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={fadeInUp}
-            >
-              Agency vs MONONIO AI
-            </motion.h2>
-            <motion.p 
-              className="text-xl text-gray-300"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={fadeInUp}
-              transition={{ delay: 0.2 }}
-            >
-              See why thousands of businesses are switching to AI-powered marketing
-            </motion.p>
-          </div>
-
-          <motion.div 
-            className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-          >
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left py-6 px-6 text-white font-semibold text-lg">Feature</th>
-                    <th className="text-center py-6 px-6 text-red-400 font-semibold text-lg">Marketing Agency</th>
-                    <th className="text-center py-6 px-6 text-green-400 font-semibold text-lg">MONONIO AI</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisonData.map((row, index) => (
-                    <tr key={index} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                      <td className="py-6 px-6 text-white font-medium">{row.feature}</td>
-                      <td className="py-6 px-6 text-center text-gray-300">{row.agency}</td>
-                      <td className="py-6 px-6 text-center">
-                        <span className={`font-semibold ${
-                          row.advantage === 'mononio' ? 'text-green-400' : 'text-gray-300'
-                        }`}>
-                          {/* Enhancement 4: Fixed comparison table bug - row.mononio is correct */}
-                          {row.mononio}
-                        </span>
-                        {row.advantage === 'mononio' && (
-                          <svg className="w-5 h-5 text-green-400 ml-2 inline" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {/* CTA Button */}
+              <button
+                onClick={() => handlePlanSelect(plan.name)}
+                style={{
+                  WebkitAppearance: 'none',
+                  outline: 'none',
+                  WebkitTapHighlightColor: 'transparent'
+                }}
+                className={`w-full rounded-lg px-4 py-3 text-center font-semibold transition-all duration-300 transform hover:scale-105 ${
+                  plan.popular
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 shadow-lg'
+                    : 'bg-gray-700 text-white hover:bg-gray-600'
+                }`}
+              >
+                <span className="flex items-center justify-center gap-2">
+                  Start Free Trial
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </button>
             </div>
-          </motion.div>
+          ))}
         </div>
-      </section>
+      </div>
+
+      {/* Pricing Benefits Section */}
+      <PricingBenefits />
+
+      {/* Pricing Comparison Table Section */}
+      <PricingComparisonTable />
+
+      {/* Testimonials Section */}
+      <PricingTestimonials />
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 md:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={fadeInUp}
-            >
-              Frequently Asked Questions
-            </motion.h2>
-            <motion.p 
-              className="text-xl text-gray-300"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={fadeInUp}
-              transition={{ delay: 0.2 }}
-            >
-              Everything you need to know about MONONIO AI pricing
-            </motion.p>
-          </div>
-
-          <motion.div 
-            className="space-y-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={staggerContainer}
-          >
-            {faqData.map((faq, index) => (
-              <motion.div 
-                key={index} 
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10"
-                variants={fadeInUp}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              >
-                <h3 className="text-xl font-semibold text-white mb-4">{faq.question}</h3>
-                <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold">Frequently Asked Questions</h2>
+          <p className="mt-4 text-gray-400">Got questions? We've got answers</p>
         </div>
-      </section>
+        
+        <div className="mx-auto max-w-3xl">
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="rounded-xl bg-gray-800 overflow-hidden transition-all duration-300 hover:bg-gray-800/80"
+              >
+                <button
+                  onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                  style={{
+                    WebkitAppearance: 'none',
+                    outline: 'none',
+                    WebkitTapHighlightColor: 'transparent'
+                  }}
+                  className="w-full px-6 py-4 text-left flex items-center justify-between"
+                >
+                  <h3 className="text-lg font-semibold text-white">{faq.question}</h3>
+                  <ChevronDown 
+                    className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
+                      expandedFaq === index ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`px-6 transition-all duration-300 ${
+                    expandedFaq === index ? 'pb-4 opacity-100 max-h-96' : 'max-h-0 opacity-0 overflow-hidden'
+                  }`}
+                >
+                  <p className="text-gray-400">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* LogoCloud Section - Restored as per changelog */}
+      <LogoCloud />
 
       {/* Final CTA Section */}
-      <section className="py-20 px-4 md:px-6 lg:px-8 bg-gradient-to-r from-indigo-600/20 to-purple-600/20">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            variants={fadeInUp}
-          >
-            Ready to Save 90% on Marketing?
-          </motion.h2>
-          <motion.p 
-            className="text-xl text-gray-300 mb-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            variants={fadeInUp}
-            transition={{ delay: 0.2 }}
-          >
-            Join thousands of businesses already using MONONIO AI to automate their marketing
-          </motion.p>
+      <div className="relative bg-gradient-to-r from-indigo-900/50 via-purple-900/50 to-indigo-900/50 py-24">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+            Ready to Transform Your Marketing?
+          </h2>
+          <p className="text-xl text-gray-300 mb-4">Join 500+ businesses already using MONONIO AI</p>
+          <p className="text-gray-400 mb-10 max-w-2xl mx-auto">
+            Start your 14-day free trial today. No credit card required.
+            Experience the power of AI-driven marketing automation.
+          </p>
           
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            variants={staggerContainer}
-          >
-            <motion.div
-              variants={fadeInUp}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              style={{
+                WebkitAppearance: 'none',
+                outline: 'none',
+                WebkitTapHighlightColor: 'transparent'
+              }}
+              className="group px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
-              <Button 
-                size="lg"
-                className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg"
-              >
+              <span className="flex items-center justify-center gap-2">
                 Start Your Free Trial
-              </Button>
-            </motion.div>
-            <motion.div
-              variants={fadeInUp}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </button>
+            
+            <button
+              style={{
+                WebkitAppearance: 'none',
+                outline: 'none',
+                WebkitTapHighlightColor: 'transparent'
+              }}
+              className="px-8 py-4 bg-gray-800 text-white font-semibold rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-xl"
             >
-              <Button 
-                variant="outline"
-                size="lg"
-                className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold rounded-xl"
-              >
-                Schedule Demo
-              </Button>
-            </motion.div>
-          </motion.div>
+              Schedule a Demo
+            </button>
+          </div>
           
-          <motion.p 
-            className="text-gray-400 mt-6 text-sm"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            variants={fadeInUp}
-            transition={{ delay: 0.4 }}
-          >
-            No credit card required • 14-day free trial • Cancel anytime
-          </motion.p>
+          <div className="mt-12 flex items-center justify-center gap-8 text-sm text-gray-400">
+            <span className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-400" />
+              14-day free trial
+            </span>
+            <span className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-400" />
+              No credit card required
+            </span>
+            <span className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-400" />
+              Cancel anytime
+            </span>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

@@ -54,13 +54,13 @@ const CardNav: React.FC<CardNavProps> = ({
 
   const calculateHeight = useCallback(() => {
     const navEl = navRef.current;
-    if (!navEl) return 280; // הגדלתי את הגובה הבסיסי
+    if (!navEl) return 280;
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     if (isMobile) {
       const contentEl = navEl.querySelector(".card-nav-content") as HTMLElement;
       if (contentEl) {
-        const topBar = 80; // הגדלתי מ-60 ל-80
+        const topBar = 80;
         const padding = 16;
         const cards = contentEl.querySelectorAll(".nav-card");
         let totalHeight = 0;
@@ -72,18 +72,16 @@ const CardNav: React.FC<CardNavProps> = ({
         return topBar + totalHeight + padding;
       }
     }
-    return 280; // הגדלתי מ-260 ל-280
+    return 280;
   }, []);
 
   // Initialize timeline once
   useEffect(() => {
     if (!navRef.current) return;
 
-    // Set initial states - הגדלתי את הגובה ההתחלתי
     gsap.set(navRef.current, { height: 80, overflow: "hidden" });
     gsap.set(cardsRef.current, { y: 30, opacity: 0 });
 
-    // Create timeline
     const tl = gsap.timeline({ 
       paused: true,
       onStart: () => {
@@ -98,106 +96,67 @@ const CardNav: React.FC<CardNavProps> = ({
     });
 
     tl.to(navRef.current, {
-      height: () => calculateHeight(),
-      duration: 0.4,
+      height: calculateHeight(),
+      duration: 0.6,
       ease: ease,
     })
-    .to(
-      cardsRef.current,
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.3,
-        stagger: 0.08,
-        ease: ease,
-      },
-      "-=0.3"
-    );
+    .to(cardsRef.current, {
+      y: 0,
+      opacity: 1,
+      duration: 0.4,
+      stagger: 0.1,
+      ease: "power2.out",
+    }, "-=0.3");
 
     tlRef.current = tl;
+  }, [calculateHeight, ease]);
 
-    return () => {
-      tl.kill();
-      tlRef.current = null;
-    };
-  }, [ease, calculateHeight]);
+  const toggleMenu = useCallback(() => {
+    if (isAnimatingRef.current) return;
 
-  // Handle resize
-  useEffect(() => {
-    const handleResize = () => {
-      if (!tlRef.current || !navRef.current) return;
-
-      if (isExpanded) {
-        const newHeight = calculateHeight();
-        gsap.set(navRef.current, { height: newHeight });
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [isExpanded, calculateHeight]);
-
-  // Click outside to close
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(event.target as Node)) {
-        if (isExpanded && !isAnimatingRef.current) {
-          closeMenu();
-        }
-      }
-    };
+    const tl = tlRef.current;
+    if (!tl) return;
 
     if (isExpanded) {
-      setTimeout(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-      }, 100);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isExpanded]);
-
-  const closeMenu = useCallback(() => {
-    if (!tlRef.current || isAnimatingRef.current) return;
-    
-    tlRef.current.reverse();
-    setIsExpanded(false);
-  }, []);
-
-  const toggleMenu = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation();
-    
-    if (!tlRef.current || isAnimatingRef.current) return;
-
-    if (isExpanded) {
-      closeMenu();
+      tl.reverse();
+      setIsExpanded(false);
     } else {
-      tlRef.current.play();
+      tl.play();
       setIsExpanded(true);
     }
-  }, [isExpanded, closeMenu]);
+  }, [isExpanded]);
 
   const handleLinkClick = (e: React.MouseEvent, href: string, label: string) => {
+    e.preventDefault();
     e.stopPropagation();
-    
+
     if (label === "Logout") {
       logout();
       router.push("/");
-      closeMenu();
       return;
     }
-    
+
     if (href.startsWith("#")) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
       }
     } else {
       router.push(href);
     }
-    
+
     closeMenu();
+  };
+
+  const closeMenu = () => {
+    if (isExpanded && !isAnimatingRef.current) {
+      const tl = tlRef.current;
+      if (tl) {
+        tl.reverse();
+        setIsExpanded(false);
+      }
+    }
   };
 
   const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
@@ -213,9 +172,9 @@ const CardNav: React.FC<CardNavProps> = ({
         className={`card-nav ${
           isExpanded ? "open" : ""
         } block h-[80px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height] bg-white dark:bg-gray-900 transition-shadow hover:shadow-lg`}
-        style={{ minHeight: '80px' }} // הוספתי min-height
+        style={{ minHeight: '80px' }}
       >
-        {/* Top bar with logo - הגדלתי את הגובה */}
+        {/* Top bar with logo */}
         <div 
           className="card-nav-top absolute inset-x-0 top-0 h-[80px] flex items-center justify-between px-4 z-[1] cursor-pointer"
           onClick={toggleMenu}
@@ -223,14 +182,14 @@ const CardNav: React.FC<CardNavProps> = ({
           {/* Empty space for balance */}
           <div className="w-8"></div>
 
-          {/* Logo container - עם z-index נמוך יותר */}
+          {/* Logo container */}
           <div
             className="logo-container flex items-center justify-center flex-1 py-2"
             onClick={(e) => e.stopPropagation()}
             style={{ 
               height: '80px',
               position: 'relative',
-              zIndex: 0  // הלוגו מאחור
+              zIndex: 0
             }}
           >
             <Link
@@ -239,12 +198,11 @@ const CardNav: React.FC<CardNavProps> = ({
               tabIndex={0}
               className="focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/30 focus-visible:ring-offset-2 rounded-lg inline-block"
             >
-              {/* השתמשתי ב-img רגיל עם style ישיר */}
               <img
                 src={logo}
                 alt={logoAlt}
                 style={{
-                  height: '300px', // גודל קבוע וברור
+                  height: '300px',
                   width: 'auto',
                   objectFit: 'contain',
                   maxHeight: '100%',
@@ -279,14 +237,13 @@ const CardNav: React.FC<CardNavProps> = ({
           </div>
         </div>
 
-        {/* Menu content - התאמתי את המיקום */}
+        {/* Menu content - FIXED: Removed aria-hidden to fix accessibility warning */}
         <div
           className={`card-nav-content absolute left-0 right-0 top-[80px] bottom-0 p-2 flex flex-col items-stretch gap-2 justify-start z-[10] ${
             isExpanded
               ? "visible pointer-events-auto"
               : "invisible pointer-events-none"
           } md:flex-row md:items-end md:gap-[12px]`}
-          aria-hidden={!isExpanded}
           style={{
             backgroundColor: isExpanded ? 'rgb(255 255 255 / 0.95)' : 'transparent',
             backdropFilter: isExpanded ? 'blur(8px)' : 'none',

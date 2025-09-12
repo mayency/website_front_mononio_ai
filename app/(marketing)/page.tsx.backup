@@ -1,0 +1,101 @@
+import { Metadata } from 'next';
+import PricingPageClient from './pricing/components/PricingPageClient';
+
+export const metadata: Metadata = {
+  title: 'Pricing Plans | MONONIO AI - AI-Powered Marketing Automation',
+  description: 'Choose the perfect MONONIO AI plan for your business. Start with 14-day free trial. Plans from $299/month with 10x ROI guarantee.',
+  keywords: 'ai marketing pricing, marketing automation cost, mononio pricing, ai campaign management pricing',
+  openGraph: {
+    title: 'MONONIO AI Pricing - Transform Your Marketing with AI',
+    description: 'Transparent pricing for AI-powered marketing campaigns. 500+ satisfied clients, 10x average ROI.',
+    url: 'https://mononio.ai/pricing',
+    siteName: 'MONONIO AI',
+    images: [
+      {
+        url: 'https://mononio.ai/og-pricing.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'MONONIO AI Pricing Plans',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MONONIO AI Pricing Plans',
+    description: 'AI-powered marketing automation starting at $299/month',
+    images: ['https://mononio.ai/og-pricing.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://mononio.ai/pricing',
+  },
+};
+
+// Structured Data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'MONONIO AI Marketing Platform',
+  description: 'AI-powered marketing campaign management platform',
+  brand: {
+    '@type': 'Brand',
+    name: 'MONONIO AI',
+  },
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Starter Plan',
+      price: '299',
+      priceCurrency: 'USD',
+      priceValidUntil: '2025-12-31',
+      itemCondition: 'https://schema.org/NewCondition',
+      availability: 'https://schema.org/InStock',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Professional Plan',
+      price: '799',
+      priceCurrency: 'USD',
+      priceValidUntil: '2025-12-31',
+      itemCondition: 'https://schema.org/NewCondition',
+      availability: 'https://schema.org/InStock',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Enterprise Plan',
+      price: '2499',
+      priceCurrency: 'USD',
+      priceValidUntil: '2025-12-31',
+      itemCondition: 'https://schema.org/NewCondition',
+      availability: 'https://schema.org/InStock',
+    },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    reviewCount: '500',
+  },
+};
+
+export default function PricingPage() {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <PricingPageClient />
+    </>
+  );
+}

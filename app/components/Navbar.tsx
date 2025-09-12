@@ -15,13 +15,9 @@ export default function Navbar() {
       bgColor: "#0D0716",
       textColor: "#fff",
       links: [
-        { label: "Our Story", href: "/about", ariaLabel: "About Mononio AI" },
-        {
-          label: "Customer Stories",
-          href: "/case-studies",
-          ariaLabel: "Customer Stories",
-        },
-        { label: "FAQ", href: "/faq", ariaLabel: "Frequently Asked Questions" },
+        { label: "Our Story", href: "#about", ariaLabel: "About Mononio AI" },
+        { label: "Customer Stories", href: "#testimonials", ariaLabel: "Customer Stories" },
+        { label: "FAQ", href: "#faq", ariaLabel: "Frequently Asked Questions" },
       ],
     },
     {
@@ -30,7 +26,7 @@ export default function Navbar() {
       textColor: "#fff",
       links: [
         { label: "Features", href: "#platform", ariaLabel: "Features" },
-        { label: "Pricing", href: "/pricing", ariaLabel: "Platform Pricing" },
+        { label: "Pricing", href: "#pricing", ariaLabel: "Platform Pricing" },
         {
           label: "Compare",
           href: "#platform",
@@ -49,7 +45,7 @@ export default function Navbar() {
       ] : [
         { label: "Watch Live Demo", href: "#Watch Live Demo", ariaLabel: "Watch Live Demo" },
         { label: "Free Trial", href: "#contact", ariaLabel: "Free Trial" },
-        { label: "How It Works", href: "#contact", ariaLabel: "How It Works" },
+        { label: "How It Works", href: "#how-it-works", ariaLabel: "How It Works" },
       ],
     },
   ];

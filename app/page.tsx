@@ -1,4 +1,4 @@
-import HomePageClient from "./components/HomePageClient";
+import SinglePageLayout from "./components/SinglePageLayout";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -35,5 +35,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <HomePageClient />;
+  return <SinglePageLayout />;
 }

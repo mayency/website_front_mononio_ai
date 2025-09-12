@@ -235,3 +235,154 @@ img {
   width: 0px;
   background: transparent;
 }
+
+/* Force hide all scrollbars */
+* {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, Opera */
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Specific for body and html */
+html, body {
+  overflow-x: hidden;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+}
+/* Safari-specific fix for purple frame/outline */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Remove Safari's default button styling */
+button {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+/* Specific fix for calculator button if needed */
+.calculator-button {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+  border: none !important;
+}
+
+/* Safari Button Fixes - Production Grade */
+* { 
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+button,
+input,
+select,
+textarea,
+a,
+.calculator-button { 
+  -webkit-appearance: none !important; 
+  -moz-appearance: none !important; 
+  appearance: none !important; 
+  outline: none !important; 
+  -webkit-tap-highlight-color: transparent !important; 
+  -webkit-touch-callout: none !important; 
+  -webkit-user-select: none !important; 
+  user-select: none !important;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus { 
+  outline: none !important; 
+  box-shadow: none !important;
+}
+
+/* Animation for fade in */
+@keyframes fadeIn { 
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  } 
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.animate-fadeIn { 
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Logo scroll animation */
+@keyframes scroll-logos { 
+  0% { 
+    transform: translateX(0); 
+  } 
+  100% { 
+    transform: translateX(-50%); 
+  }
+}
+
+.animate-scroll-logos { 
+  animation: scroll-logos 30s linear infinite;
+}
+
+/* Performance optimizations */
+.will-change-transform { 
+  will-change: transform;
+}
+
+/* Smooth scrolling */
+html { 
+  scroll-behavior: smooth;
+}
+
+/* Disable text selection on buttons */
+button { 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  user-select: none;
+}
+
+/* Logo scroll animation - Right to Left */
+@keyframes scroll-logos-rtl { 
+  0% { 
+    transform: translateX(0); 
+  } 
+  100% { 
+    transform: translateX(-33.33%); 
+  }
+}
+
+.animate-scroll-logos-rtl { 
+  display: flex; 
+  animation: scroll-logos-rtl 40s linear infinite; 
+  will-change: transform;
+}
+
+/* Smooth animation on hover */
+.animate-scroll-logos-rtl:hover { 
+  animation-play-state: paused;
+}
+
+/* Responsive speed adjustment */
+@media (max-width: 768px) { 
+  .animate-scroll-logos-rtl { 
+    animation-duration: 30s; 
+  }
+}
